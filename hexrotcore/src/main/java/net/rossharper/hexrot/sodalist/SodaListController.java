@@ -13,7 +13,7 @@ public class SodaListController {
         mSodaListProvider.getSodas(new SodaListProviderListener() {
             @Override
             public void sodaListReceived(SodaList sodaList) {
-
+                mSodaListView.displaySodaList(sodaList);
             }
         });
     }
