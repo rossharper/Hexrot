@@ -1,6 +1,7 @@
 package net.rossharper.hexrot.android;
 
 import net.rossharper.hexrot.HomeScreenDisplayEventFactory;
+import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
 import net.rossharper.otto.Bus;
 
 public class AndroidHomeScreenDisplayEventFactory implements HomeScreenDisplayEventFactory {
