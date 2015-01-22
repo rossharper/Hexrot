@@ -1,4 +1,4 @@
-package net.rossharper.hexrot;
+package net.rossharper.hexrot.android;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

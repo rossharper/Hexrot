@@ -1,7 +1,9 @@
-package net.rossharper.hexrot;
+package net.rossharper.hexrot.android;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import net.rossharper.hexrot.R;
 
 public class MainActivity extends Activity {
 
