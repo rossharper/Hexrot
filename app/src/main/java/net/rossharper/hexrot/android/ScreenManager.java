@@ -23,7 +23,7 @@ public class ScreenManager {
     }
 
     private void displayScreen(ScreenFactory screenFactory) {
-        mFragmentManager.beginTransaction().replace(mRootContainerId, (Fragment) screenFactory.getScreen()).commit();
+        mFragmentManager.beginTransaction().replace(mRootContainerId, screenFactory.getScreen()).commit();
     }
 
     public void onStart() {
