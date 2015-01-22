@@ -1,3 +1,3 @@
 # Hexrot
 
-An hexagonal android experiment. In progress. Playing with some ideas. They may be terrible.
+An hexagonal Android experiment. In progress. Playing with some ideas. They may be terrible.
