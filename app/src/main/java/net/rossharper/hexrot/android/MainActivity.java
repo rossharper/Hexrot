@@ -2,13 +2,12 @@ package net.rossharper.hexrot.android;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Looper;
 
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.android.eventbus.MainThreadEnforcer;
 import net.rossharper.otto.Bus;
-import net.rossharper.otto.ThreadEnforcer;
 
 public class MainActivity extends Activity {
 
@@ -26,16 +25,7 @@ public class MainActivity extends Activity {
     }
 
     private void createSingleActivityApplication() {
-
-        mNavigationEventBus = new Bus(new ThreadEnforcer() {
-            @Override
-            public void enforce(Bus bus) {
-                if (Looper.myLooper() != Looper.getMainLooper()) {
-                    throw new IllegalStateException("Event bus " + bus + " accessed from non-main thread " + Looper.myLooper());
-                }
-            }
-        });
-
+        mNavigationEventBus = new Bus(new MainThreadEnforcer());
         mScreenManager = new ScreenManager(mNavigationEventBus, getFragmentManager(), R.id.main_container);
         mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory(mNavigationEventBus));
     }
@@ -54,4 +44,5 @@ public class MainActivity extends Activity {
 
         mScreenManager.onStop();
     }
+
 }
