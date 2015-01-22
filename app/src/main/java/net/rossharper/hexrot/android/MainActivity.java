@@ -13,7 +13,7 @@ import net.rossharper.otto.ThreadEnforcer;
 public class MainActivity extends Activity {
 
     private ApplicationController mApplicationController;
-    private AndroidScreenManager mScreenManager;
+    private ScreenManager mScreenManager;
     private Bus mNavigationEventBus;
 
     @Override
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        mScreenManager = new AndroidScreenManager(mNavigationEventBus, getFragmentManager(), R.id.main_container);
+        mScreenManager = new ScreenManager(mNavigationEventBus, getFragmentManager(), R.id.main_container);
         mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory(mNavigationEventBus));
     }
 
