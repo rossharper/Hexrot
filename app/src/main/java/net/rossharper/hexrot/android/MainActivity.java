@@ -3,7 +3,7 @@ package net.rossharper.hexrot.android;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.ApplicationController;
+import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
 
