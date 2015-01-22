@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
     }
 
     private void startSingleActivityApplication() {
+        // TODO: explore the use of an event bus instead of passing around screen managers and screen factories
         mScreenManager = new AndroidScreenManager(getFragmentManager(), R.id.main_container);
         mApplicationController = new ApplicationController(mScreenManager, new AndroidHomeScreenFactory());
         mApplicationController.onReady();
