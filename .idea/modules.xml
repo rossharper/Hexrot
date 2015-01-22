@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Hexrot.iml" filepath="$PROJECT_DIR$/Hexrot.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hexrotcore/hexrotcore.iml" filepath="$PROJECT_DIR$/hexrotcore/hexrotcore.iml" />
     </modules>
   </component>
 </project>
