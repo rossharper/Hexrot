@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
 import net.rossharper.hexrot.sodalist.SodaListProvider;
 import net.rossharper.hexrot.sodalist.SodaListProviderListener;
@@ -26,5 +27,10 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
         mController = new SodaListController(this, new RemoteSodaListProvider());
         mController.onReady();
+    }
+
+    @Override
+    public void displaySodaList(SodaList sodaList) {
+
     }
 }
