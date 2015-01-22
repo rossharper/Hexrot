@@ -17,9 +17,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mScreenManager = new AndroidScreenManager(getFragmentManager(), R.id.main_container);
+        startSingleActivityApplication();
+    }
 
-        // Create the application controller and tell it we are ready
+    private void startSingleActivityApplication() {
+        mScreenManager = new AndroidScreenManager(getFragmentManager(), R.id.main_container);
         mApplicationController = new ApplicationController(mScreenManager, new AndroidHomeScreenFactory());
         mApplicationController.onReady();
     }
