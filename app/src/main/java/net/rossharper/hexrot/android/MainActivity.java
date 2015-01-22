@@ -3,12 +3,12 @@ package net.rossharper.hexrot.android;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
+
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.android.eventbus.MainThreadEnforcer;
-import net.rossharper.otto.Bus;
-
 public class MainActivity extends Activity {
 
     private ApplicationController mApplicationController;
@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     }
 
     private void createSingleActivityApplication() {
-        mNavigationEventBus = new Bus(new MainThreadEnforcer());
+        mNavigationEventBus = new Bus(ThreadEnforcer.MAIN, "NavigationEventBus");
         mScreenManager = new ScreenManager(mNavigationEventBus, getFragmentManager(), R.id.main_container);
         mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory(mNavigationEventBus));
     }

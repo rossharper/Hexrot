@@ -1,10 +1,9 @@
 package net.rossharper.hexrot.android;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 
-import net.rossharper.otto.Bus;
-import net.rossharper.otto.Subscribe;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 public class ScreenManager {
     private int mRootContainerId;

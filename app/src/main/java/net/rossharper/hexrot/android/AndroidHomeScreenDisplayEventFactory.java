@@ -1,8 +1,9 @@
 package net.rossharper.hexrot.android;
 
+import com.squareup.otto.Bus;
+
 import net.rossharper.hexrot.HomeScreenDisplayEventFactory;
 import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
-import net.rossharper.otto.Bus;
 
 public class AndroidHomeScreenDisplayEventFactory implements HomeScreenDisplayEventFactory {
     private Bus mNavigationBus;
