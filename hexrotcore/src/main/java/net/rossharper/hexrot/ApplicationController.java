@@ -1,17 +1,13 @@
 package net.rossharper.hexrot;
 
 public class ApplicationController {
-    private ScreenFactory mHomeScreenFactory;
-    private ScreenManager mScreenManager;
+    private HomeScreenDisplayEventFactory mHomeScreenDisplayEventFactory;
 
-    public ApplicationController(ScreenManager mScreenManager, ScreenFactory mHomeScreenFactory) {
-        this.mScreenManager = mScreenManager;
-        this.mHomeScreenFactory = mHomeScreenFactory;
+    public ApplicationController(HomeScreenDisplayEventFactory homeScreenDisplayEventFactory) {
+        mHomeScreenDisplayEventFactory = homeScreenDisplayEventFactory;
     }
 
     public void onReady() {
-        // Display the first screen
-
-        mScreenManager.displayScreen(mHomeScreenFactory);
+        mHomeScreenDisplayEventFactory.emitEvent();
     }
 }
