@@ -6,10 +6,7 @@ Warning: hacks are abundant.
 
 TODO:
 
-- backstack for second screen
-
-- need to split out providers and fetchers. Make them hexagonal
-- UNIT TEST SOME OF THIS!
+- UNIT TEST MORE OF THIS!
 - upgrade to latest API level
 - use pull down swipe refresh list
 
@@ -17,4 +14,4 @@ TODO:
 - list item view holder
 - list item view class?
 
-- what about rotation - does my method of newing fragments introduce configuration change problems?
+- what about rotation - does my method of creating fragments introduce configuration change problems?
