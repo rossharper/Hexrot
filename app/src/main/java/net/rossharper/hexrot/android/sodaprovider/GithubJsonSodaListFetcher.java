@@ -7,6 +7,7 @@ public class GithubJsonSodaListFetcher {
 
     public static interface Listener {
         void sodasReceived(String jsonSodaList);
+        void sodaFetchError();
     }
 
     public void getSodas(final Listener listener) {
@@ -14,6 +15,11 @@ public class GithubJsonSodaListFetcher {
             @Override
             public void onResponse(String response) {
                 listener.sodasReceived(response);
+            }
+
+            @Override
+            public void onError() {
+                listener.sodaFetchError();
             }
         });
     }

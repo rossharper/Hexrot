@@ -4,5 +4,6 @@
     <string name="app_name">Hexrot</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="soda_list_fetch_error">Could not retrieve Soda list</string>
 
 </resources>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
@@ -54,5 +55,10 @@ public class SodaListFragment extends Fragment implements SodaListView {
     @Override
     public void displaySodaList(SodaList sodaList) {
         mListAdapter.setSodaList(sodaList);
+    }
+
+    @Override
+    public void displaySodaListFetchError() {
+        Toast.makeText(getActivity(), R.string.soda_list_fetch_error, Toast.LENGTH_SHORT);
     }
 }

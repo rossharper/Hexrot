@@ -23,16 +23,57 @@ public class RemoteSodaListProvider implements SodaListProvider {
             public void sodasReceived(String jsonSodaList) {
                 try {
                     final SodaList sodaList = new SodaJsonParser().parse(jsonSodaList);
-                    mMainThreadHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            sodaListProviderListener.sodaListReceived(sodaList);
-                        }
-                    });
+                    invokeOnMainThread(new SodaListReceived(sodaListProviderListener, sodaList));
                 } catch (JSONException e) {
                     // TODO: error handling
                 }
             }
+
+            @Override
+            public void sodaFetchError() {
+                invokeOnMainThread(new SodaListFetchError(sodaListProviderListener));
+            }
         });
+    }
+
+    private void invokeOnMainThread(final Response response) {
+        mMainThreadHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                response.invoke();
+            }
+        });
+    }
+
+    private interface Response {
+        void invoke();
+    }
+
+    private class SodaListReceived implements Response {
+        private SodaListProviderListener mSodaListProviderListener;
+        private SodaList mSodaList;
+
+        public SodaListReceived(SodaListProviderListener sodaListProviderListener, SodaList sodaList) {
+            mSodaListProviderListener = sodaListProviderListener;
+            mSodaList = sodaList;
+        }
+
+        @Override
+        public void invoke() {
+            mSodaListProviderListener.sodaListReceived(mSodaList);
+        }
+    }
+
+    private class SodaListFetchError implements Response {
+        private SodaListProviderListener mSodaListProviderListener;
+
+        private SodaListFetchError(SodaListProviderListener sodaListProviderListener) {
+            mSodaListProviderListener = sodaListProviderListener;
+        }
+
+        @Override
+        public void invoke() {
+            mSodaListProviderListener.sodaListFetchError();
+        }
     }
 }

@@ -15,3 +15,7 @@ TODO:
 - list item view class?
 
 - what about rotation - does my method of creating fragments introduce configuration change problems?
+
+- list load spinner
+- better error message
+- network timeout

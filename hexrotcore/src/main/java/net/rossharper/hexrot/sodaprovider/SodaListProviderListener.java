@@ -4,4 +4,5 @@ import net.rossharper.hexrot.sodalist.SodaList;
 
 public interface SodaListProviderListener {
     public void sodaListReceived(SodaList sodaList);
+    public void sodaListFetchError();
 }

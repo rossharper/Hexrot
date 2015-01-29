@@ -10,6 +10,7 @@ import java.io.IOException;
 public class StringFetcher {
     public static interface ResponseListener {
         void onResponse(String response);
+        void onError();
     }
 
     public void get(String url, final ResponseListener responseListener) {
@@ -22,7 +23,7 @@ public class StringFetcher {
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                // TODO: not in spec, but should handle
+                responseListener.onError();
             }
 
             @Override

@@ -23,6 +23,11 @@ public class SodaListController {
                 mSodaList = sodaList;
                 mSodaListView.displaySodaList(sodaList);
             }
+
+            @Override
+            public void sodaListFetchError() {
+                mSodaListView.displaySodaListFetchError();
+            }
         });
     }
 
