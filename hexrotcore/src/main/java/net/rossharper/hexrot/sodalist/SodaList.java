@@ -18,4 +18,8 @@ public class SodaList {
     public Soda get(int i) {
         return mSodaList.get(i);
     }
+
+    public List<Soda> getAsList() {
+        return mSodaList;
+    }
 }
