@@ -8,6 +8,6 @@ public class ApplicationController {
     }
 
     public void onReady() {
-        mHomeScreenDisplayEventFactory.emitEvent();
+        mHomeScreenDisplayEventFactory.emitDisplayScreenEvent();
     }
 }

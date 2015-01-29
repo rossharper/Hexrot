@@ -1,15 +1,13 @@
 package net.rossharper.hexrot.android;
 
-import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
-
 public class ScreenDisplayEvent {
-    private SodaListScreenFactory mScreenFactory;
+    private ScreenFactory mScreenFactory;
 
-    public ScreenDisplayEvent(SodaListScreenFactory screenFactory) {
+    public ScreenDisplayEvent(ScreenFactory screenFactory) {
         this.mScreenFactory = screenFactory;
     }
 
-    public SodaListScreenFactory getScreenFactory() {
+    public ScreenFactory getScreenFactory() {
         return mScreenFactory;
     }
 }

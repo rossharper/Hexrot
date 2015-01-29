@@ -13,7 +13,7 @@ public class AndroidHomeScreenDisplayEventFactory implements HomeScreenDisplayEv
     }
 
     @Override
-    public void emitEvent() {
+    public void emitDisplayScreenEvent() {
         mNavigationBus.post(new ScreenDisplayEvent(new SodaListScreenFactory()));
     }
 }
