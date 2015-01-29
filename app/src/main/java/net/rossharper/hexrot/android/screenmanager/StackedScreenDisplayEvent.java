@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android;
+package net.rossharper.hexrot.android.screenmanager;
 
 public class StackedScreenDisplayEvent implements ScreenDisplayEvent {
     private ScreenFactory mScreenFactory;

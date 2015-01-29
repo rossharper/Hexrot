@@ -1,7 +1,7 @@
 package net.rossharper.hexrot.android.sodadetails;
 
-import net.rossharper.hexrot.android.NavigationBus;
-import net.rossharper.hexrot.android.StackedScreenDisplayEvent;
+import net.rossharper.hexrot.android.screenmanager.NavigationBus;
+import net.rossharper.hexrot.android.screenmanager.StackedScreenDisplayEvent;
 import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
 

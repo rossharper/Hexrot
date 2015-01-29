@@ -6,6 +6,7 @@ import android.os.Bundle;
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 
 public class MainActivity extends Activity {
 

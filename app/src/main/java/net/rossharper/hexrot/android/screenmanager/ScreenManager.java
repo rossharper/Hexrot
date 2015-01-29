@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android;
+package net.rossharper.hexrot.android.screenmanager;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;

@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android;
+package net.rossharper.hexrot.android.screenmanager;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
