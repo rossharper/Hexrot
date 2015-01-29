@@ -5,16 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.model.Soda;
+import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
-import net.rossharper.hexrot.sodalist.SodaListProvider;
-import net.rossharper.hexrot.sodalist.SodaListProviderListener;
 import net.rossharper.hexrot.sodalist.SodaListView;
 
 public class SodaListFragment extends Fragment implements SodaListView {
@@ -34,13 +31,22 @@ public class SodaListFragment extends Fragment implements SodaListView {
         mListView = (ListView)view.findViewById(R.id.listView);
         mListAdapter = new SodaListAdapter(getActivity());
         mListView.setAdapter(mListAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                mController.onItemClick(position);
+            }
+        });
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        mController = new SodaListController(this, new RemoteSodaListProvider(getActivity()));
+        mController = new SodaListController(
+                this,
+                new RemoteSodaListProvider(getActivity()),
+                new AndroidSodaDetailsScreenDisplayEventFactory());
         mController.onReady();
     }
 

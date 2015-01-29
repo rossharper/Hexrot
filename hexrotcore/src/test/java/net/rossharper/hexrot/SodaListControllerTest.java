@@ -26,7 +26,7 @@ public class SodaListControllerTest {
         SodaListProvider sodaListProvider = createSodaListProviderFixture();
 
         // Act
-        SodaListController sut = new SodaListController(mockView, sodaListProvider);
+        SodaListController sut = new SodaListController(mockView, sodaListProvider, mSodaDetailsScreenDisplayEventFactory);
         sut.onReady();
 
         // Assert
