@@ -1,10 +1,19 @@
 {
     "sodaList":[
         {
-            "name":"Dr Salt"
+            "name":"Dr Salt",
+            "price":150,
+            "volume":1500
         },
         {
-            "name":"Hillside Mist"
+            "name":"Hillside Mist",
+            "price":125,
+            "volume":750
+        },
+        {
+            "name":"Big Red Cola",
+            "price":175,
+            "volume":2000
         }
     ]
 }
