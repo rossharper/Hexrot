@@ -1,5 +1,6 @@
 package net.rossharper.hexrot;
 
+import net.rossharper.hexrot.model.Price;
 import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
@@ -84,6 +85,11 @@ public class SodaListControllerTest {
             @Override
             public String getName() {
                 return sodaName;
+            }
+
+            @Override
+            public Price getPrice() {
+                return Price.fromGbpPence(1);
             }
         };
     }

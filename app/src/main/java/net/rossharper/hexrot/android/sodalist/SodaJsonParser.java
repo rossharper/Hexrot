@@ -1,5 +1,6 @@
 package net.rossharper.hexrot.android.sodalist;
 
+import net.rossharper.hexrot.model.Price;
 import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodalist.SodaList;
 
@@ -16,17 +17,40 @@ public class SodaJsonParser {
 
         JSONObject rootJsonObject = new JSONObject(response);
         JSONArray jsonArray = rootJsonObject.getJSONArray("sodaList");
-        for(int i = 0; i < jsonArray.length(); ++i) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            final String sodaName = jsonObject.getString("name");
-            sodaList.add(new Soda() {
-                @Override
-                public String getName() {
-                    return sodaName;
-                }
-            });
-        }
+        parseSodaList(sodaList, jsonArray);
 
         return new SodaList(sodaList);
+    }
+
+    private void parseSodaList(List<Soda> sodaList, JSONArray jsonArray) throws JSONException {
+        for(int i = 0; i < jsonArray.length(); ++i) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            parseSodaItem(sodaList, jsonObject);
+        }
+    }
+
+    private void parseSodaItem(List<Soda> sodaList, JSONObject jsonObject) throws JSONException {
+        final String sodaName = parseSodaName(jsonObject);
+        final Price sodaPrice = parseSodaPrice(jsonObject);
+        sodaList.add(new Soda() {
+            @Override
+            public String getName() {
+                return sodaName;
+            }
+
+            @Override
+            public Price getPrice() {
+                return sodaPrice;
+            }
+        });
+    }
+
+    private Price parseSodaPrice(JSONObject jsonObject) throws JSONException {
+        int priceInPence = jsonObject.getInt("price");
+        return Price.fromGbpPence(priceInPence);
+    }
+
+    private String parseSodaName(JSONObject jsonObject) throws JSONException {
+        return jsonObject.getString("name");
     }
 }

@@ -13,5 +13,6 @@ public class SodaDetailsController {
 
     public void onReady() {
         mSodaDetailsView.setSodaName(mSoda.getName());
+        mSodaDetailsView.setSodaPrice(mSoda.getPrice().toString());
     }
 }
