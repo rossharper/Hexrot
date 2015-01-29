@@ -46,6 +46,11 @@ public class SodaDetailsFragment extends Fragment implements SodaDetailsView {
         setTextView(R.id.sodaprice, sodaPrice);
     }
 
+    @Override
+    public void setSodaVolume(String sodaVolume) {
+        setTextView(R.id.sodavolume, sodaVolume);
+    }
+
     private void setTextView(int textViewId, String text) {
         ((TextView)getView().findViewById(textViewId)).setText(text);
     }

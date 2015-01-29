@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import net.rossharper.hexrot.model.Price;
 import net.rossharper.hexrot.model.Soda;
+import net.rossharper.hexrot.model.Volume;
 
 public class SodaParcel implements Parcelable {
     private Soda mSoda;
@@ -24,6 +25,11 @@ public class SodaParcel implements Parcelable {
             public Price getPrice() {
                 return Price.fromGbpPence(source.readInt());
             }
+
+            @Override
+            public Volume getVolume() {
+                return Volume.fromMillilitres(source.readInt());
+            }
         };
     }
 
@@ -36,6 +42,7 @@ public class SodaParcel implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(mSoda.getName());
         parcel.writeInt(mSoda.getPrice().getPriceInPence());
+        parcel.writeInt(mSoda.getVolume().getVolumeInMillilitres());
     }
 
     public static final Parcelable.Creator<SodaParcel> CREATOR = new Parcelable.Creator<SodaParcel>() {
