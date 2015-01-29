@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
+import net.rossharper.hexrot.android.sodaprovider.RemoteSodaListProvider;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
 import net.rossharper.hexrot.sodalist.SodaListView;

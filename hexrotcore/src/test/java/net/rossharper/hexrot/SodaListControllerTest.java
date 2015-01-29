@@ -6,8 +6,8 @@ import net.rossharper.hexrot.model.Volume;
 import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
-import net.rossharper.hexrot.sodalist.SodaListProvider;
-import net.rossharper.hexrot.sodalist.SodaListProviderListener;
+import net.rossharper.hexrot.sodaprovider.SodaListProvider;
+import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 import net.rossharper.hexrot.sodalist.SodaListView;
 
 import org.hamcrest.Matcher;

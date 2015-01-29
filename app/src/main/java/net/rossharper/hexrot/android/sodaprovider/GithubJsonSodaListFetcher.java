@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodalist;
+package net.rossharper.hexrot.android.sodaprovider;
 
 import net.rossharper.hexrot.android.network.StringFetcher;
 

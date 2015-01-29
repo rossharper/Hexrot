@@ -1,6 +1,8 @@
 package net.rossharper.hexrot.sodalist;
 
 import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
+import net.rossharper.hexrot.sodaprovider.SodaListProvider;
+import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
 public class SodaListController {
     private SodaListView mSodaListView;

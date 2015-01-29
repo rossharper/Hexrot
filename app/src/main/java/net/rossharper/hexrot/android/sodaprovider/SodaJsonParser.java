@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodalist;
+package net.rossharper.hexrot.android.sodaprovider;
 
 import net.rossharper.hexrot.model.Price;
 import net.rossharper.hexrot.model.Soda;

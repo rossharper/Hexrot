@@ -1,11 +1,11 @@
-package net.rossharper.hexrot.android.sodalist;
+package net.rossharper.hexrot.android.sodaprovider;
 
 import android.content.Context;
 import android.os.Handler;
 
 import net.rossharper.hexrot.sodalist.SodaList;
-import net.rossharper.hexrot.sodalist.SodaListProvider;
-import net.rossharper.hexrot.sodalist.SodaListProviderListener;
+import net.rossharper.hexrot.sodaprovider.SodaListProvider;
+import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
 import org.json.JSONException;
 
