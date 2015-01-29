@@ -1,9 +1,9 @@
 package net.rossharper.hexrot.android;
 
-public class RootScreenDisplayEvent {
+public class ScreenDisplayEvent {
     private ScreenFactory mScreenFactory;
 
-    public RootScreenDisplayEvent(ScreenFactory screenFactory) {
+    public ScreenDisplayEvent(ScreenFactory screenFactory) {
         this.mScreenFactory = screenFactory;
     }
 

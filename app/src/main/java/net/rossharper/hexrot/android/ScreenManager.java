@@ -14,7 +14,7 @@ public class ScreenManager {
     }
 
     @Subscribe
-    public void handleScreenDisplayEvent(RootScreenDisplayEvent screenDisplayEvent) {
+    public void handleScreenDisplayEvent(ScreenDisplayEvent screenDisplayEvent) {
         displayScreen(screenDisplayEvent.getScreenFactory());
     }
 
