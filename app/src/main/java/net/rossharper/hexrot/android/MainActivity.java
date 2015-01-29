@@ -13,7 +13,6 @@ public class MainActivity extends Activity {
 
     private ApplicationController mApplicationController;
     private ScreenManager mScreenManager;
-    private Bus mNavigationEventBus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +24,8 @@ public class MainActivity extends Activity {
     }
 
     private void createSingleActivityApplication() {
-        mNavigationEventBus = new Bus(ThreadEnforcer.MAIN, "NavigationEventBus");
-        mScreenManager = new ScreenManager(mNavigationEventBus, getFragmentManager(), R.id.main_container);
-        mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory(mNavigationEventBus));
+        mScreenManager = new ScreenManager(getFragmentManager(), R.id.main_container);
+        mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory());
     }
 
     @Override

@@ -2,22 +2,19 @@ package net.rossharper.hexrot.android;
 
 import android.app.FragmentManager;
 
-import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
 public class ScreenManager {
     private int mRootContainerId;
-    private Bus mNavigationBus;
     private FragmentManager mFragmentManager;
 
-    public ScreenManager(Bus navigationBus, FragmentManager fragmentManager, int rootContainerId) {
-        mNavigationBus = navigationBus;
+    public ScreenManager(FragmentManager fragmentManager, int rootContainerId) {
         mFragmentManager = fragmentManager;
         mRootContainerId = rootContainerId;
     }
 
     @Subscribe
-    public void handleScreenDisplayEvent(ScreenDisplayEvent screenDisplayEvent) {
+    public void handleScreenDisplayEvent(RootScreenDisplayEvent screenDisplayEvent) {
         displayScreen(screenDisplayEvent.getScreenFactory());
     }
 
@@ -26,10 +23,10 @@ public class ScreenManager {
     }
 
     public void onStart() {
-        mNavigationBus.register(this);
+        NavigationBus.getInstance().register(this);
     }
 
     public void onStop() {
-        mNavigationBus.unregister(this);
+        NavigationBus.getInstance().unregister(this);
     }
 }
