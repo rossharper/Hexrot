@@ -6,6 +6,6 @@ import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
 public class AndroidHomeScreenDisplayEventFactory implements HomeScreenDisplayEventFactory {
     @Override
     public void emitDisplayScreenEvent() {
-        NavigationBus.getInstance().post(new ScreenDisplayEvent(new SodaListScreenFactory()));
+        NavigationBus.getEventBus().post(new RootScreenDisplayEvent(new SodaListScreenFactory()));
     }
 }

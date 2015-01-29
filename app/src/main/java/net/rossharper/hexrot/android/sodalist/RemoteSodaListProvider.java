@@ -2,7 +2,6 @@ package net.rossharper.hexrot.android.sodalist;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListProvider;

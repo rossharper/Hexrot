@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.squareup.otto.Bus;
-
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.sodalist.SodaList;

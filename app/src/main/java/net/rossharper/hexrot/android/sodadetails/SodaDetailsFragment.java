@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.model.Soda;
 
 public class SodaDetailsFragment extends Fragment {
     public static final String SODA_ARG = "soda";

@@ -1,6 +1,7 @@
 package net.rossharper.hexrot.android;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 
 import com.squareup.otto.Subscribe;
 
@@ -14,19 +15,32 @@ public class ScreenManager {
     }
 
     @Subscribe
-    public void handleScreenDisplayEvent(ScreenDisplayEvent screenDisplayEvent) {
-        displayScreen(screenDisplayEvent.getScreenFactory());
+    public void handleRootScreenDisplayEvent(RootScreenDisplayEvent screenDisplayEvent) {
+        displayRootScreen(screenDisplayEvent.getScreenFactory());
     }
 
-    private void displayScreen(ScreenFactory screenFactory) {
-        mFragmentManager.beginTransaction().replace(mRootContainerId, screenFactory.getScreen()).commit();
+    @Subscribe
+    public void handleStackedScreenDisplayEvent(StackedScreenDisplayEvent screenDisplayEvent) {
+        displayStackedScreen(screenDisplayEvent.getScreenFactory());
+    }
+
+    private void displayRootScreen(ScreenFactory screenFactory) {
+        createFragmentTransactionForScreen(screenFactory).commit();
+    }
+
+    private void displayStackedScreen(ScreenFactory screenFactory) {
+        createFragmentTransactionForScreen(screenFactory).addToBackStack(null).commit();
+    }
+
+    private FragmentTransaction createFragmentTransactionForScreen(ScreenFactory screenFactory) {
+        return mFragmentManager.beginTransaction().replace(mRootContainerId, screenFactory.getScreen());
     }
 
     public void onStart() {
-        NavigationBus.getInstance().register(this);
+        NavigationBus.getEventBus().register(this);
     }
 
     public void onStop() {
-        NavigationBus.getInstance().unregister(this);
+        NavigationBus.getEventBus().unregister(this);
     }
 }

@@ -3,12 +3,10 @@ package net.rossharper.hexrot.android;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
-
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
+
 public class MainActivity extends Activity {
 
     private ApplicationController mApplicationController;

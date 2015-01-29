@@ -1,6 +1,7 @@
 package net.rossharper.hexrot;
 
 import net.rossharper.hexrot.model.Soda;
+import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
 import net.rossharper.hexrot.sodalist.SodaListProvider;
@@ -26,7 +27,7 @@ public class SodaListControllerTest {
         SodaListProvider sodaListProvider = createSodaListProviderFixture();
 
         // Act
-        SodaListController sut = new SodaListController(mockView, sodaListProvider, mSodaDetailsScreenDisplayEventFactory);
+        SodaListController sut = new SodaListController(mockView, sodaListProvider, mock(SodaDetailsScreenDisplayEventFactory.class));
         sut.onReady();
 
         // Assert
