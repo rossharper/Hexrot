@@ -7,7 +7,7 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public class StringFetcher implements net.rossharper.hexrot.networking.StringFetcher {
+class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetcher {
 
     @Override
     public void get(String url, final ResponseListener responseListener) {

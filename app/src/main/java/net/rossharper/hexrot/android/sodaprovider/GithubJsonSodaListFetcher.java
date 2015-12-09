@@ -1,6 +1,7 @@
 package net.rossharper.hexrot.android.sodaprovider;
 
-import net.rossharper.hexrot.android.network.StringFetcher;
+import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
+import net.rossharper.hexrot.networking.StringFetcher;
 
 public class GithubJsonSodaListFetcher {
     // TODO: tackle the concept of configuration and provide this from there
@@ -12,7 +13,7 @@ public class GithubJsonSodaListFetcher {
     }
 
     public void getSodas(final Listener listener) {
-        new StringFetcher().get(SODA_LIST_URL, new StringFetcher.ResponseListener() {
+        new OkHttpNetworkingFactory().createStringFetcher().get(SODA_LIST_URL, new StringFetcher.ResponseListener() {
             @Override
             public void onResponse(String response) {
                 listener.sodasReceived(response);
