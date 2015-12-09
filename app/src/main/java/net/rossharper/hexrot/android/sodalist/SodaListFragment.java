@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
 import net.rossharper.hexrot.android.sodaprovider.RemoteSodaListProvider;
 import net.rossharper.hexrot.sodalist.SodaList;
@@ -47,7 +48,7 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
         mController = new SodaListController(
                 this,
-                new RemoteSodaListProvider(getActivity()),
+                new RemoteSodaListProvider(getActivity(), new OkHttpNetworkingFactory()),
                 new AndroidSodaDetailsScreenDisplayEventFactory());
         mController.onReady();
     }
