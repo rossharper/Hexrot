@@ -3,6 +3,7 @@ package net.rossharper.hexrot.android.sodaprovider;
 import net.rossharper.hexrot.android.network.StringFetcher;
 
 public class GithubJsonSodaListFetcher {
+    // TODO: tackle the concept of configuration and provide this from there
     private static final String SODA_LIST_URL = "https://raw.githubusercontent.com/rossharper/Hexrot/master/servicedata/sodalist.json";
 
     public static interface Listener {
