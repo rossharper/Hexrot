@@ -10,8 +10,16 @@ import java.util.concurrent.TimeUnit;
 
 class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetcher {
 
+    // TODO: just calling back to main thread for now
+    // needs a better threading model
+    private final MainThreadInvoker mainThreadInvoker;
+
+    public OkHttpStringFetcher(final MainThreadInvoker mainThreadInvoker) {
+        this.mainThreadInvoker = mainThreadInvoker;
+    }
+
     @Override
-    public void get(String url, final ResponseListener responseListener) {
+    public void get(final String url, final ResponseListener responseListener) {
         OkHttpClient httpClient = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -23,13 +31,24 @@ class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetc
 
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                responseListener.onError();
+            public void onFailure(final Request request, IOException e) {
+                mainThreadInvoker.invokeOnMainThread(new MainThreadInvoker.Command() {
+                    @Override
+                    public void invoke() {
+                        responseListener.onError();
+                    }
+                });
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                responseListener.onResponse(response.body().string());
+            public void onResponse(final Response response) throws IOException {
+                final String stringResponse = response.body().string();
+                mainThreadInvoker.invokeOnMainThread(new MainThreadInvoker.Command() {
+                    @Override
+                    public void invoke() {
+                        responseListener.onResponse(stringResponse);
+                    }
+                });
             }
         });
     }

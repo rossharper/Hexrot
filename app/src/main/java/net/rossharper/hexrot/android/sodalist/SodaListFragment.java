@@ -48,7 +48,7 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
         mController = new SodaListController(
                 this,
-                new RemoteSodaListProvider(getActivity(), new OkHttpNetworkingFactory()),
+                new RemoteSodaListProvider(new OkHttpNetworkingFactory(getActivity())),
                 new AndroidSodaDetailsScreenDisplayEventFactory());
         mController.onReady();
     }
