@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodaprovider;
+package net.rossharper.hexrot.sodaprovider;
 
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.networking.StringFetcher;
@@ -13,7 +13,7 @@ public class GithubJsonSodaListFetcher {
         this.networkingFactory = networkingFactory;
     }
 
-    public static interface Listener {
+    public interface Listener {
         void sodasReceived(String jsonSodaList);
         void sodaFetchError();
     }

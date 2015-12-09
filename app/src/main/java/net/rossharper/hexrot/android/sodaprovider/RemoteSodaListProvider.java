@@ -2,6 +2,7 @@ package net.rossharper.hexrot.android.sodaprovider;
 
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
+import net.rossharper.hexrot.sodaprovider.GithubJsonSodaListFetcher;
 import net.rossharper.hexrot.sodaprovider.SodaListProvider;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
