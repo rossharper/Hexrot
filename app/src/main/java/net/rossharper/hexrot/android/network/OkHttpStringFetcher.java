@@ -6,6 +6,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetcher {
 
@@ -16,6 +17,9 @@ class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetc
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+
+        // TODO: temporary while I'm hacking on a train
+        httpClient.setConnectTimeout(5, TimeUnit.SECONDS);
 
         httpClient.newCall(request).enqueue(new Callback() {
             @Override

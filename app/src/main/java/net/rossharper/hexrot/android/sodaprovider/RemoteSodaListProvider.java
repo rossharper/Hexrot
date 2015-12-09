@@ -25,10 +25,11 @@ public class RemoteSodaListProvider implements SodaListProvider {
             @Override
             public void sodasReceived(String jsonSodaList) {
                 try {
+                    // TODO: parse on a background thread
                     final SodaList sodaList = new SodaJsonParser().parse(jsonSodaList);
                     invokeOnMainThread(new SodaListReceived(sodaListProviderListener, sodaList));
                 } catch (JSONException e) {
-                    // TODO: error handling
+                    invokeOnMainThread(new SodaListFetchError(sodaListProviderListener));
                 }
             }
 

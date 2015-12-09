@@ -60,6 +60,6 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
     @Override
     public void displaySodaListFetchError() {
-        Toast.makeText(getActivity(), R.string.soda_list_fetch_error, Toast.LENGTH_SHORT);
+        Toast.makeText(getActivity(), R.string.soda_list_fetch_error, Toast.LENGTH_SHORT).show();
     }
 }
