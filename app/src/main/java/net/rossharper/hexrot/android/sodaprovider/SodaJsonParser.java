@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: can this be moved to core? Can org.JSON be used there? Other JSON Library?
 public class SodaJsonParser {
     public SodaList parse(String response) throws JSONException {
         List<Soda> sodaList = new ArrayList<Soda>();
@@ -30,6 +31,7 @@ public class SodaJsonParser {
         }
     }
 
+    // TODO: catch JSON exception and throw SodaJsonParseException instead? (Leaking JSON parsing concept out of this class?)
     private void parseSodaItem(List<Soda> sodaList, JSONObject jsonObject) throws JSONException {
         final String sodaName = parseSodaName(jsonObject);
         final Price sodaPrice = parseSodaPrice(jsonObject);

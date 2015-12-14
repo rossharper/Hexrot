@@ -8,6 +8,7 @@ import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
 import org.json.JSONException;
 
+// TODO: can this be moved into core?
 public class RemoteSodaListProvider implements SodaListProvider {
 
     private NetworkingFactory networkingFactory;
