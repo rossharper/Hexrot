@@ -7,6 +7,6 @@ import net.rossharper.hexrot.networking.NetworkingFactory;
  */
 public class SodaListProviderFactory {
     public SodaListProvider createSodaListProvider(NetworkingFactory networkingFactory) {
-        return new RemoteSodaListProvider(networkingFactory);
+        return new RemoteSodaListProvider(networkingFactory, new SodaJsonParser());
     }
 }
