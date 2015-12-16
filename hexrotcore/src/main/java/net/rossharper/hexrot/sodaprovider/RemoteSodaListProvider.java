@@ -3,7 +3,7 @@ package net.rossharper.hexrot.sodaprovider;
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 
-public class RemoteSodaListProvider implements SodaListProvider {
+class RemoteSodaListProvider implements SodaListProvider {
 
     private NetworkingFactory networkingFactory;
 

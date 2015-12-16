@@ -3,7 +3,7 @@ package net.rossharper.hexrot.sodaprovider;
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.networking.StringFetcher;
 
-public class GithubJsonSodaListFetcher {
+class GithubJsonSodaListFetcher {
     // TODO: tackle the concept of configuration and provide this from there
     private static final String SODA_LIST_URL = "https://raw.githubusercontent.com/rossharper/Hexrot/master/servicedata/sodalist.json";
 

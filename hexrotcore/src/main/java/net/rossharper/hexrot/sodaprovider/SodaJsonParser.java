@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SodaJsonParser {
+class SodaJsonParser {
 
     public class SodaJsonParserException extends Exception {
     }
