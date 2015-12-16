@@ -82,21 +82,6 @@ public class SodaListControllerTest {
     }
 
     private Soda createSodaFixture(final String sodaName) {
-        return new Soda() {
-            @Override
-            public String getName() {
-                return sodaName;
-            }
-
-            @Override
-            public Price getPrice() {
-                return Price.fromGbpPence(1);
-            }
-
-            @Override
-            public Volume getVolume() {
-                return Volume.fromMillilitres(1);
-            }
-        };
+        return new Soda(sodaName, Price.fromGbpPence(1), Volume.fromMillilitres(1));
     }
 }

@@ -15,22 +15,7 @@ public class SodaParcel implements Parcelable {
     }
 
     public SodaParcel(final Parcel source) {
-        mSoda = new Soda() {
-            @Override
-            public String getName() {
-                return source.readString();
-            }
-
-            @Override
-            public Price getPrice() {
-                return Price.fromGbpPence(source.readInt());
-            }
-
-            @Override
-            public Volume getVolume() {
-                return Volume.fromMillilitres(source.readInt());
-            }
-        };
+        mSoda = new Soda(source.readString(), Price.fromGbpPence(source.readInt()), Volume.fromMillilitres(source.readInt()));
     }
 
     @Override

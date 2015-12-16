@@ -40,22 +40,7 @@ class SodaJsonParser {
             final String sodaName = parseSodaName(jsonObject);
             final Price sodaPrice = parseSodaPrice(jsonObject);
             final Volume sodaVolume = parseSodaVolume(jsonObject);
-            return new Soda() {
-                @Override
-                public String getName() {
-                    return sodaName;
-                }
-
-                @Override
-                public Price getPrice() {
-                    return sodaPrice;
-                }
-
-                @Override
-                public Volume getVolume() {
-                    return sodaVolume;
-                }
-            };
+            return new Soda(sodaName, sodaPrice, sodaVolume);
         }
         catch(JSONException e) {
             throw new SodaJsonParserException();
