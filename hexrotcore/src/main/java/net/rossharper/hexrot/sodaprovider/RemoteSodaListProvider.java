@@ -1,13 +1,8 @@
-package net.rossharper.hexrot.android.sodaprovider;
+package net.rossharper.hexrot.sodaprovider;
 
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
-import net.rossharper.hexrot.sodaprovider.GithubJsonSodaListFetcher;
-import net.rossharper.hexrot.sodaprovider.SodaJsonParser;
-import net.rossharper.hexrot.sodaprovider.SodaListProvider;
-import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
-// TODO: can this be moved into core?
 public class RemoteSodaListProvider implements SodaListProvider {
 
     private NetworkingFactory networkingFactory;
@@ -18,6 +13,7 @@ public class RemoteSodaListProvider implements SodaListProvider {
 
     @Override
     public void getSodas(final SodaListProviderListener sodaListProviderListener) {
+        // TODO: should this be injected? or the whole lot assembled by a factory?
         new GithubJsonSodaListFetcher(networkingFactory).getSodas(new GithubJsonSodaListFetcher.Listener() {
             @Override
             public void sodasReceived(String jsonSodaList) {
