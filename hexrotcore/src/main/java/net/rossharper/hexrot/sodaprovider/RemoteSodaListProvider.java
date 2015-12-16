@@ -1,23 +1,20 @@
 package net.rossharper.hexrot.sodaprovider;
 
-import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 
 class RemoteSodaListProvider implements SodaListProvider {
 
-    private GithubJsonSodaListFetcher githubJsonSodaListFetcher;
+    private SodaListFetcher sodaListFetcher;
     private SodaJsonParser sodaJsonParser;
 
-    public RemoteSodaListProvider(NetworkingFactory networkingFactory, SodaJsonParser sodaJsonParser) {
-        // TODO: genereceise the fetcher interface and inject from factory
-        githubJsonSodaListFetcher = new GithubJsonSodaListFetcher(networkingFactory);
+    public RemoteSodaListProvider(SodaListFetcher sodaListFetcher, SodaJsonParser sodaJsonParser) {
+        this.sodaListFetcher = sodaListFetcher;
         this.sodaJsonParser = sodaJsonParser;
     }
 
     @Override
     public void getSodas(final SodaListProviderListener sodaListProviderListener) {
-        // TODO: should this be injected? or the whole lot assembled by a factory?
-        githubJsonSodaListFetcher.getSodas(new GithubJsonSodaListFetcher.Listener() {
+        sodaListFetcher.fetchSodaList(new SodaListFetcher.Listener() {
             @Override
             public void sodasReceived(String jsonSodaList) {
                 try {

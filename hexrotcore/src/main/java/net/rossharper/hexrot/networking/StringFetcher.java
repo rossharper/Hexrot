@@ -6,7 +6,7 @@ package net.rossharper.hexrot.networking;
 public interface StringFetcher {
     void get(String url, ResponseListener responseListener);
 
-    public static interface ResponseListener {
+    interface ResponseListener {
         void onResponse(String response);
         void onError();
     }

@@ -18,29 +18,29 @@ class SodaJsonParser {
     }
 
     public SodaList parse(String response) throws SodaJsonParserException {
-        List<Soda> sodaList = new ArrayList<Soda>();
-
         JSONObject rootJsonObject = new JSONObject(response);
         JSONArray jsonArray = rootJsonObject.getJSONArray("sodaList");
-        parseSodaList(sodaList, jsonArray);
+        List<Soda> sodaList = parseSodaList(jsonArray);
 
         return new SodaList(sodaList);
     }
 
-    private void parseSodaList(List<Soda> sodaList, JSONArray jsonArray) throws SodaJsonParserException {
+    private List<Soda> parseSodaList(JSONArray jsonArray) throws SodaJsonParserException {
+        List<Soda> sodaList = new ArrayList<Soda>();
         for(int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            parseSodaItem(sodaList, jsonObject);
+            sodaList.add(parseSodaItem(jsonObject));
         }
+        return sodaList;
     }
     
     // TODO: don't modify the list in place!
-    private void parseSodaItem(List<Soda> sodaList, JSONObject jsonObject) throws SodaJsonParserException {
+    private Soda parseSodaItem(JSONObject jsonObject) throws SodaJsonParserException {
         try {
             final String sodaName = parseSodaName(jsonObject);
             final Price sodaPrice = parseSodaPrice(jsonObject);
             final Volume sodaVolume = parseSodaVolume(jsonObject);
-            sodaList.add(new Soda() {
+            return new Soda() {
                 @Override
                 public String getName() {
                     return sodaName;
@@ -55,7 +55,7 @@ class SodaJsonParser {
                 public Volume getVolume() {
                     return sodaVolume;
                 }
-            });
+            };
         }
         catch(JSONException e) {
             throw new SodaJsonParserException();
