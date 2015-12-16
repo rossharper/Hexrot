@@ -3,10 +3,9 @@ package net.rossharper.hexrot.android.sodaprovider;
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodaprovider.GithubJsonSodaListFetcher;
+import net.rossharper.hexrot.sodaprovider.SodaJsonParser;
 import net.rossharper.hexrot.sodaprovider.SodaListProvider;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
-
-import org.json.JSONException;
 
 // TODO: can this be moved into core?
 public class RemoteSodaListProvider implements SodaListProvider {
@@ -26,7 +25,7 @@ public class RemoteSodaListProvider implements SodaListProvider {
                     // TODO: parse on a background thread
                     final SodaList sodaList = new SodaJsonParser().parse(jsonSodaList);
                     sodaListProviderListener.sodaListReceived(sodaList);
-                } catch (JSONException e) {
+                } catch (SodaJsonParser.SodaJsonParserException e) {
                     sodaListProviderListener.sodaListFetchError();
                 }
             }

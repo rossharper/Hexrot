@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodaprovider;
+package net.rossharper.hexrot.sodaprovider;
 
 import net.rossharper.hexrot.model.Price;
 import net.rossharper.hexrot.model.Soda;
@@ -12,9 +12,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: can this be moved to core? Can org.JSON be used there? Other JSON Library?
 public class SodaJsonParser {
-    public SodaList parse(String response) throws JSONException {
+
+    public class SodaJsonParserException extends Exception {
+    }
+
+    public SodaList parse(String response) throws SodaJsonParserException {
         List<Soda> sodaList = new ArrayList<Soda>();
 
         JSONObject rootJsonObject = new JSONObject(response);
@@ -24,34 +27,39 @@ public class SodaJsonParser {
         return new SodaList(sodaList);
     }
 
-    private void parseSodaList(List<Soda> sodaList, JSONArray jsonArray) throws JSONException {
+    private void parseSodaList(List<Soda> sodaList, JSONArray jsonArray) throws SodaJsonParserException {
         for(int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             parseSodaItem(sodaList, jsonObject);
         }
     }
+    
+    // TODO: don't modify the list in place!
+    private void parseSodaItem(List<Soda> sodaList, JSONObject jsonObject) throws SodaJsonParserException {
+        try {
+            final String sodaName = parseSodaName(jsonObject);
+            final Price sodaPrice = parseSodaPrice(jsonObject);
+            final Volume sodaVolume = parseSodaVolume(jsonObject);
+            sodaList.add(new Soda() {
+                @Override
+                public String getName() {
+                    return sodaName;
+                }
 
-    // TODO: catch JSON exception and throw SodaJsonParseException instead? (Leaking JSON parsing concept out of this class?)
-    private void parseSodaItem(List<Soda> sodaList, JSONObject jsonObject) throws JSONException {
-        final String sodaName = parseSodaName(jsonObject);
-        final Price sodaPrice = parseSodaPrice(jsonObject);
-        final Volume sodaVolume = parseSodaVolume(jsonObject);
-        sodaList.add(new Soda() {
-            @Override
-            public String getName() {
-                return sodaName;
-            }
+                @Override
+                public Price getPrice() {
+                    return sodaPrice;
+                }
 
-            @Override
-            public Price getPrice() {
-                return sodaPrice;
-            }
-
-            @Override
-            public Volume getVolume() {
-                return sodaVolume;
-            }
-        });
+                @Override
+                public Volume getVolume() {
+                    return sodaVolume;
+                }
+            });
+        }
+        catch(JSONException e) {
+            throw new SodaJsonParserException();
+        }
     }
 
     private Volume parseSodaVolume(JSONObject jsonObject) throws JSONException {

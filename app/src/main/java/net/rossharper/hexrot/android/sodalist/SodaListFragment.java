@@ -26,7 +26,13 @@ public class SodaListFragment extends Fragment implements SodaListView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.soda_list_fragment, container, false);
+
+        // TODO: create some sort of streamview that is abstracted from Android somewhat
+        // uses recyclerview under the hood (Android Implementation)
+        // data adapter from model to view model
+        // view binders: view model bound onto views (cells)
         setupListView(view);
+
         return view;
     }
 

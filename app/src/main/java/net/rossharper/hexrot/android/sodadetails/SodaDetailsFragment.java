@@ -33,6 +33,7 @@ public class SodaDetailsFragment extends Fragment implements SodaDetailsView {
     }
 
     private Soda getDataFromBundleArguments() {
+        // TODO: a view model for this? instead of a datamodel? Or would they be the same!?
         return ((SodaParcel)getArguments().getParcelable(SODA_ARG)).getSoda();
     }
 
