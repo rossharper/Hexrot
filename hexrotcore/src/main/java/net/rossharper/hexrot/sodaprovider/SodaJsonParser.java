@@ -18,14 +18,19 @@ class SodaJsonParser {
     }
 
     public SodaList parse(String response) throws SodaJsonParserException {
-        JSONObject rootJsonObject = new JSONObject(response);
-        JSONArray jsonArray = rootJsonObject.getJSONArray("sodaList");
-        List<Soda> sodaList = parseSodaList(jsonArray);
+        try {
+            JSONObject rootJsonObject = new JSONObject(response);
+            JSONArray jsonArray = rootJsonObject.getJSONArray("sodaList");
+            List<Soda> sodaList = parseSodaList(jsonArray);
 
-        return new SodaList(sodaList);
+            return new SodaList(sodaList);
+        }
+        catch(JSONException e) {
+            throw new SodaJsonParserException();
+        }
     }
 
-    private List<Soda> parseSodaList(JSONArray jsonArray) throws SodaJsonParserException {
+    private List<Soda> parseSodaList(JSONArray jsonArray) {
         List<Soda> sodaList = new ArrayList<Soda>();
         for(int i = 0; i < jsonArray.length(); ++i) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -33,18 +38,12 @@ class SodaJsonParser {
         }
         return sodaList;
     }
-    
-    // TODO: don't modify the list in place!
-    private Soda parseSodaItem(JSONObject jsonObject) throws SodaJsonParserException {
-        try {
-            final String sodaName = parseSodaName(jsonObject);
-            final Price sodaPrice = parseSodaPrice(jsonObject);
-            final Volume sodaVolume = parseSodaVolume(jsonObject);
-            return new Soda(sodaName, sodaPrice, sodaVolume);
-        }
-        catch(JSONException e) {
-            throw new SodaJsonParserException();
-        }
+
+    private Soda parseSodaItem(JSONObject jsonObject) {
+        final String sodaName = parseSodaName(jsonObject);
+        final Price sodaPrice = parseSodaPrice(jsonObject);
+        final Volume sodaVolume = parseSodaVolume(jsonObject);
+        return new Soda(sodaName, sodaPrice, sodaVolume);
     }
 
     private Volume parseSodaVolume(JSONObject jsonObject) throws JSONException {
