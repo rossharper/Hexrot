@@ -5,19 +5,12 @@ import net.rossharper.hexrot.networking.StringFetcher;
 
 class GithubJsonSodaListFetcher implements SodaListFetcher {
 
-    private static final SodaListProviderConfig config = new SodaListProviderConfig() {
-        private static final String SODA_LIST_URL = "https://raw.githubusercontent.com/rossharper/Hexrot/master/servicedata/sodalist.json";
+    private final SodaListProviderConfig config;
+    private final NetworkingFactory networkingFactory;
 
-        @Override
-        public String getSodaListUrl() {
-            return SODA_LIST_URL;
-        }
-    };
-
-    private NetworkingFactory networkingFactory;
-
-    public GithubJsonSodaListFetcher(NetworkingFactory networkingFactory) {
+    public GithubJsonSodaListFetcher(NetworkingFactory networkingFactory, SodaListProviderConfig config) {
         this.networkingFactory = networkingFactory;
+        this.config = config;
     }
 
     @Override
