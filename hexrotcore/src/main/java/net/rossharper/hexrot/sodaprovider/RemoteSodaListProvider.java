@@ -18,7 +18,7 @@ class RemoteSodaListProvider implements SodaListProvider {
             @Override
             public void sodasReceived(String jsonSodaList) {
                 try {
-                    // TODO: parse on a background thread
+                    // TODO: parse on a background thread?
                     final SodaList sodaList = sodaJsonParser.parse(jsonSodaList);
                     sodaListProviderListener.sodaListReceived(sodaList);
                 } catch (SodaJsonParser.SodaJsonParserException e) {
