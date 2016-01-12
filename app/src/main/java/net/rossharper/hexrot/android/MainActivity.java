@@ -6,12 +6,13 @@ import android.os.Bundle;
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.android.screenmanager.ScreenDisplayEventHandler;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 
 public class MainActivity extends Activity {
 
     private ApplicationController mApplicationController;
-    private ScreenManager mScreenManager;
+    private ScreenDisplayEventHandler mScreenDisplayEventHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class MainActivity extends Activity {
     }
 
     private void createSingleActivityApplication() {
-        mScreenManager = new ScreenManager(getFragmentManager(), R.id.main_container);
+        mScreenDisplayEventHandler = new ScreenDisplayEventHandler(new ScreenManager(getFragmentManager(), R.id.main_container));
         mApplicationController = new ApplicationController(new AndroidHomeScreenDisplayEventFactory());
     }
 
@@ -31,7 +32,7 @@ public class MainActivity extends Activity {
     protected void onStart() {
         super.onStart();
 
-        mScreenManager.onStart();
+        mScreenDisplayEventHandler.onStart();
         mApplicationController.onReady();
     }
 
@@ -39,7 +40,7 @@ public class MainActivity extends Activity {
     protected void onStop() {
         super.onStop();
 
-        mScreenManager.onStop();
+        mScreenDisplayEventHandler.onStop();
     }
 
 }
