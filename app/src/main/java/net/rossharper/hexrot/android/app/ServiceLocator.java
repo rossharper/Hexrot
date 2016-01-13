@@ -7,6 +7,8 @@ import java.util.Map;
 
 // TODO: TEMPORARY pattern while I figure out a better way of sharing app services / singletons across fragment boundaries?
 // Look into a better method of accessing things like this from a fragment/view that can just 'pop' into existence
+// TODO: perhaps use a role interface based explicitly named services approach rather than this generic
+// key based service locator which is probably harder to debug
 public class ServiceLocator {
 
     // TODO: Is there a better location for Service IDs? So that service locator doesn't need to know about them?
