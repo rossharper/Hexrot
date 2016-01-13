@@ -1,19 +1,23 @@
 package net.rossharper.hexrot.sodalist;
 
-import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayEventFactory;
+import net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayCommandFactory;
 import net.rossharper.hexrot.sodaprovider.SodaListProvider;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
 public class SodaListController {
-    private SodaListView mSodaListView;
-    private SodaListProvider mSodaListProvider;
-    private SodaList mSodaList;
-    private SodaDetailsScreenDisplayEventFactory mSodaDetailsScreenDisplayEventFactory;
+    private final SodaListView mSodaListView;
+    private final SodaListProvider mSodaListProvider;
+    private final SodaDetailsScreenDisplayCommandFactory mSodaDetailsScreenDisplayCommandFactory;
 
-    public SodaListController(SodaListView sodaListView, SodaListProvider sodaListProvider, SodaDetailsScreenDisplayEventFactory sodaDetailsScreenDisplayEventFactory) {
+    private SodaList mSodaList; // TODO: can we (re)move this state?
+
+    public SodaListController(SodaListView sodaListView,
+                              SodaListProvider sodaListProvider,
+                              SodaDetailsScreenDisplayCommandFactory sodaDetailsScreenDisplayCommandFactory) {
+
         mSodaListView = sodaListView;
         mSodaListProvider = sodaListProvider;
-        mSodaDetailsScreenDisplayEventFactory = sodaDetailsScreenDisplayEventFactory;
+        mSodaDetailsScreenDisplayCommandFactory = sodaDetailsScreenDisplayCommandFactory;
     }
 
     public void onReady() {
@@ -32,6 +36,6 @@ public class SodaListController {
     }
 
     public void onItemClick(int position) {
-        mSodaDetailsScreenDisplayEventFactory.emitDisplayScreenEvent(mSodaList.get(position));
+        mSodaDetailsScreenDisplayCommandFactory.createWithData(mSodaList.get(position)).displayScreen();
     }
 }

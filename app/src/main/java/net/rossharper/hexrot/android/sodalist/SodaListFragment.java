@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.app.AppConfig;
+import net.rossharper.hexrot.android.app.ServiceLocator;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
-import net.rossharper.hexrot.android.sodadetails.AndroidSodaDetailsScreenDisplayEventFactory;
+import net.rossharper.hexrot.android.screenmanager.ScreenManager;
+import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
 import net.rossharper.hexrot.sodalist.SodaListView;
@@ -62,10 +64,12 @@ public class SodaListFragment extends Fragment implements SodaListView {
         };
 
         final SodaListProviderFactory sodaListProviderFactory = new SodaListProviderFactory();
+
         mController = new SodaListController(
                 this,
                 sodaListProviderFactory.createSodaListProvider(new OkHttpNetworkingFactory(getActivity()), config),
-                new AndroidSodaDetailsScreenDisplayEventFactory());
+                new SodaDetailsScreenDisplayCommandFactory((ScreenManager)ServiceLocator.getService(ServiceLocator.SCREEN_MANAGER)));
+
         mController.onReady();
     }
 

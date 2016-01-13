@@ -3,6 +3,7 @@ package net.rossharper.hexrot.sodaprovider;
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.networking.StringFetcher;
 
+// TODO: probably not named properly anymore
 class GithubJsonSodaListFetcher implements SodaListFetcher {
 
     private final SodaListProviderConfig config;
