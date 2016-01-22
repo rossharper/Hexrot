@@ -9,23 +9,36 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import net.rossharper.collectionview.ItemViewModel;
+import net.rossharper.collectionview.android.CollectionModel;
+import net.rossharper.collectionview.android.ItemModel;
+import net.rossharper.collectionview.android.ItemViewBinder;
+import net.rossharper.collectionview.android.ItemViewFactory;
+import net.rossharper.collectionview.android.ListViewCollectionView;
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.android.app.ServiceLocator;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;
+import net.rossharper.hexrot.android.sodalist.collectionview.SodaItemViewBinder;
+import net.rossharper.hexrot.android.sodalist.collectionview.SodaItemViewFactory;
+import net.rossharper.hexrot.android.sodalist.collectionview.SodaListItemViewModel;
+import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodalist.SodaListController;
 import net.rossharper.hexrot.sodalist.SodaListView;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderConfig;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderFactory;
 
+import java.util.ArrayList;
+
 public class SodaListFragment extends Fragment implements SodaListView {
     private SodaListController mController;
 
     private ListView mListView;
     private SodaListAdapter mListAdapter;
+    private ListViewCollectionView mCollectionView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +63,8 @@ public class SodaListFragment extends Fragment implements SodaListView {
                 mController.onItemClick(position);
             }
         });
+
+        mCollectionView = (ListViewCollectionView)view.findViewById(R.id.collectionView);
     }
 
     @Override
@@ -76,6 +91,20 @@ public class SodaListFragment extends Fragment implements SodaListView {
     @Override
     public void displaySodaList(SodaList sodaList) {
         mListAdapter.setSodaList(sodaList);
+        mCollectionView.setCollectionModel(createCollectionModel(sodaList));
+    }
+
+    private CollectionModel createCollectionModel(SodaList sodaList) {
+        ArrayList<ItemModel> itemModels = new ArrayList<ItemModel>();
+
+        ItemViewFactory itemViewFactory = new SodaItemViewFactory(getActivity());
+        ItemViewBinder itemViewBinder = new SodaItemViewBinder();
+        for(Soda soda : sodaList.getAsList()) {
+            ItemViewModel itemViewModel = new SodaListItemViewModel(soda.getName());
+            itemModels.add(new ItemModel(itemViewFactory, itemViewBinder, itemViewModel));
+        }
+
+        return new CollectionModel(itemModels);
     }
 
     @Override

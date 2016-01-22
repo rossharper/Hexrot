@@ -9,4 +9,15 @@
         android:id="@+id/listView"
         android:layout_gravity="center_horizontal" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="COLLECTION BELOW HERE"/>
+    
+    <net.rossharper.collectionview.android.ListViewCollectionView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/collectionView"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
