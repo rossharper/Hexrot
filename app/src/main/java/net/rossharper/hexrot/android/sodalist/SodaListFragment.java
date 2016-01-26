@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import net.rossharper.collectionview.CollectionModelDataAdapter;
 import net.rossharper.collectionview.CollectionView;
+import net.rossharper.collectionview.CollectionViewPresenter;
+import net.rossharper.collectionview.DataProvider;
+import net.rossharper.collectionview.DataProviderListener;
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.android.app.ServiceLocator;
@@ -16,15 +18,15 @@ import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaListCollectionModelDataAdapterFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
-import net.rossharper.hexrot.sodalist.SodaListController;
-import net.rossharper.hexrot.sodalist.SodaListView;
+import net.rossharper.hexrot.sodaprovider.SodaListProvider;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderConfig;
 import net.rossharper.hexrot.sodaprovider.SodaListProviderFactory;
+import net.rossharper.hexrot.sodaprovider.SodaListProviderListener;
 
-public class SodaListFragment extends Fragment implements SodaListView {
-    private SodaListController mController;
+public class SodaListFragment extends Fragment {
 
     private CollectionView mCollectionView;
+    private CollectionViewPresenter mCollectionViewPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class SodaListFragment extends Fragment implements SodaListView {
     public void onStart() {
         super.onStart();
 
-        SodaListProviderConfig config = new SodaListProviderConfig() {
+        final SodaListProviderConfig config = new SodaListProviderConfig() {
             @Override
             public String getSodaListUrl() {
                 return AppConfig.SODA_LIST_URL;
@@ -48,25 +50,33 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
         final SodaListProviderFactory sodaListProviderFactory = new SodaListProviderFactory();
 
-        // TODO: is this controller even needed? Have a collection view controller?
+        DataProvider dataProvider = new DataProvider() {
+            SodaListProvider mSodaListProvider =
+                    sodaListProviderFactory.createSodaListProvider(
+                            new OkHttpNetworkingFactory(getActivity()),
+                            config);
 
-        mController = new SodaListController(
-                this,
-                sodaListProviderFactory.createSodaListProvider(new OkHttpNetworkingFactory(getActivity()), config));
+            @Override
+            public void loadData(final DataProviderListener listener) {
+                mSodaListProvider.getSodas(new SodaListProviderListener() {
+                    @Override
+                    public void sodaListReceived(SodaList sodaList) {
+                        listener.onLoad(sodaList.getAsList());
+                    }
 
-        mController.onReady();
-    }
+                    @Override
+                    public void sodaListFetchError() {
+                        listener.onError();
+                    }
+                });
+            }
+        };
 
-    @Override
-    public void displaySodaList(SodaList sodaList) {
         CollectionModelDataAdapter collectionModelDataAdapter
                 = SodaListCollectionModelDataAdapterFactory.createCollectionModelDataAdapter(
                 (ScreenManager) ServiceLocator.getService(ServiceLocator.SCREEN_MANAGER));
-        mCollectionView.setCollectionModel(collectionModelDataAdapter.createCollectionModel(sodaList.getAsList()));
-    }
 
-    @Override
-    public void displaySodaListFetchError() {
-        Toast.makeText(getActivity(), R.string.soda_list_fetch_error, Toast.LENGTH_LONG).show();
+        mCollectionViewPresenter = new CollectionViewPresenter(mCollectionView, dataProvider, collectionModelDataAdapter);
+        mCollectionViewPresenter.onReady();
     }
 }
