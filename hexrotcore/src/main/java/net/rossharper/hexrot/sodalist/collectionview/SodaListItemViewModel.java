@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodalist.collectionview;
+package net.rossharper.hexrot.sodalist.collectionview;
 
 import net.rossharper.collectionview.ItemViewModel;
 

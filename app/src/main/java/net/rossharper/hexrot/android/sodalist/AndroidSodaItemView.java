@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import net.rossharper.collectionview.ClickListener;
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.sodalist.SodaItemView;
 
 public class AndroidSodaItemView extends LinearLayout implements SodaItemView {
 

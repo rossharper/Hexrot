@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodalist;
+package net.rossharper.hexrot.sodalist;
 
 import net.rossharper.collectionview.ClickListener;
 

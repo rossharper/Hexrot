@@ -10,6 +10,7 @@ import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;
 import net.rossharper.hexrot.model.Soda;
+import net.rossharper.hexrot.sodalist.collectionview.SodaListItemModelFactory;
 
 public class SodaListCollectionModelDataAdapterFactory {
     public static CollectionModelDataAdapter createCollectionModelDataAdapter(ScreenManager screenManager) {
@@ -30,7 +31,7 @@ public class SodaListCollectionModelDataAdapterFactory {
             }
         };
 
-        ItemModelFactory itemModelFactory = new SodaListItemModelFactory(clickListenerFactory);
+        ItemModelFactory itemModelFactory = new SodaListItemModelFactory(clickListenerFactory, new SodaItemViewFactory());
 
         ItemModelFactoryRegistry itemModelFactoryRegistry = new ItemModelFactoryRegistry();
         itemModelFactoryRegistry.registerItemModelFactory(Soda.class, itemModelFactory);

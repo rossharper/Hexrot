@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.sodalist.collectionview;
+package net.rossharper.hexrot.sodalist.collectionview;
 
 import net.rossharper.collectionview.ClickListenerFactory;
 import net.rossharper.collectionview.ItemModel;
@@ -8,13 +8,14 @@ import net.rossharper.collectionview.ItemViewFactory;
 import net.rossharper.collectionview.ItemViewModel;
 import net.rossharper.hexrot.model.Soda;
 
-class SodaListItemModelFactory implements ItemModelFactory {
+public class SodaListItemModelFactory implements ItemModelFactory {
     private SodaListItemDataAdapter mDataAdapter = new SodaListItemDataAdapter();
-    private ItemViewFactory mItemViewFactory = new SodaItemViewFactory();
+    private ItemViewFactory mItemViewFactory;
     private ClickListenerFactory<Soda> mClickListenerFactory;
 
-    SodaListItemModelFactory(ClickListenerFactory<Soda> clickListenerFactory) {
+    public SodaListItemModelFactory(ClickListenerFactory<Soda> clickListenerFactory, ItemViewFactory sodaItemViewFactory) {
         mClickListenerFactory = clickListenerFactory;
+        mItemViewFactory = sodaItemViewFactory;
     }
 
     public ItemModel createItemModel(Object data) {

@@ -1,8 +1,8 @@
-package net.rossharper.hexrot.android.sodalist.collectionview;
+package net.rossharper.hexrot.sodalist.collectionview;
 
 import net.rossharper.collectionview.ClickListener;
 import net.rossharper.collectionview.ItemViewBinder;
-import net.rossharper.hexrot.android.sodalist.SodaItemView;
+import net.rossharper.hexrot.sodalist.SodaItemView;
 
 public class SodaItemViewBinder implements ItemViewBinder<SodaItemView, SodaListItemViewModel> {
     private ClickListener mClickListener;
