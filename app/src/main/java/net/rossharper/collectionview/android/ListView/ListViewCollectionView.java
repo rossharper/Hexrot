@@ -1,4 +1,4 @@
-package net.rossharper.collectionview.android;
+package net.rossharper.collectionview.android.ListView;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import net.rossharper.collectionview.android.ListView.Adapter;
+import net.rossharper.collectionview.CollectionModel;
+import net.rossharper.collectionview.CollectionView;
 import net.rossharper.hexrot.R;
 
 public class ListViewCollectionView extends FrameLayout implements CollectionView {

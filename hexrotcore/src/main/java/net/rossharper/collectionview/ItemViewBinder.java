@@ -1,4 +1,4 @@
-package net.rossharper.collectionview.android;
+package net.rossharper.collectionview;
 
 import net.rossharper.collectionview.ItemViewModel;
 

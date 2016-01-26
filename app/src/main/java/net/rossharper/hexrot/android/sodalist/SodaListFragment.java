@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import net.rossharper.collectionview.android.CollectionModelFactory;
-import net.rossharper.collectionview.android.CollectionView;
+import net.rossharper.collectionview.CollectionModelFactory;
+import net.rossharper.collectionview.CollectionView;
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.android.app.ServiceLocator;

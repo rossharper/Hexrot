@@ -1,6 +1,6 @@
 package net.rossharper.hexrot.android.sodalist;
 
-import net.rossharper.collectionview.android.ClickListener;
+import net.rossharper.collectionview.ClickListener;
 
 public interface SodaItemView {
     void setClickListener(final ClickListener clickListener);

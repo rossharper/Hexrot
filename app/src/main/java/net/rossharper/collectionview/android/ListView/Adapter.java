@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import net.rossharper.collectionview.android.CollectionModel;
+import net.rossharper.collectionview.CollectionModel;
 import net.rossharper.collectionview.android.AndroidItemViewFactory;
 
 import java.util.Collections;

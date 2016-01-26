@@ -1,12 +1,12 @@
 package net.rossharper.hexrot.android.sodalist.collectionview;
 
 import net.rossharper.collectionview.ItemViewModel;
-import net.rossharper.collectionview.android.ClickListener;
-import net.rossharper.collectionview.android.CollectionModel;
-import net.rossharper.collectionview.android.CollectionModelFactory;
-import net.rossharper.collectionview.android.ItemModel;
-import net.rossharper.collectionview.android.ItemViewBinder;
-import net.rossharper.collectionview.android.ItemViewFactory;
+import net.rossharper.collectionview.ClickListener;
+import net.rossharper.collectionview.CollectionModel;
+import net.rossharper.collectionview.CollectionModelFactory;
+import net.rossharper.collectionview.ItemModel;
+import net.rossharper.collectionview.ItemViewBinder;
+import net.rossharper.collectionview.ItemViewFactory;
 import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;

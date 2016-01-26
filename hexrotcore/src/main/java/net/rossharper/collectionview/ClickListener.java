@@ -1,4 +1,4 @@
-package net.rossharper.collectionview.android;
+package net.rossharper.collectionview;
 
 public interface ClickListener {
     void onClick();

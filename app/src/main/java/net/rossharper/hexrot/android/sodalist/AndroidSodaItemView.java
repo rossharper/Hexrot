@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import net.rossharper.collectionview.android.ClickListener;
+import net.rossharper.collectionview.ClickListener;
 import net.rossharper.hexrot.R;
 
 public class AndroidSodaItemView extends LinearLayout implements SodaItemView {

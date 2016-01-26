@@ -1,5 +1,7 @@
-package net.rossharper.collectionview.android;
+package net.rossharper.collectionview;
 
+import net.rossharper.collectionview.ItemViewBinder;
+import net.rossharper.collectionview.ItemViewFactory;
 import net.rossharper.collectionview.ItemViewModel;
 
 public class ItemModel {
