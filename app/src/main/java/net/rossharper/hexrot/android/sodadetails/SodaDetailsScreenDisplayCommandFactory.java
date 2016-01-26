@@ -5,9 +5,6 @@ import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodalist.SodaListScreenDisplayCommand;
 import net.rossharper.hexrot.model.Soda;
 
-/**
- * Created by harper05 on 12/01/16.
- */
 public class SodaDetailsScreenDisplayCommandFactory implements net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayCommandFactory {
     private ScreenManager screenManager;
 

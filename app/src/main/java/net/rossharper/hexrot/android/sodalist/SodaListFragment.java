@@ -10,16 +10,19 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import net.rossharper.collectionview.ItemViewModel;
+import net.rossharper.collectionview.android.ClickListener;
 import net.rossharper.collectionview.android.CollectionModel;
 import net.rossharper.collectionview.android.ItemModel;
 import net.rossharper.collectionview.android.ItemViewBinder;
 import net.rossharper.collectionview.android.ItemViewFactory;
 import net.rossharper.collectionview.android.ListViewCollectionView;
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.android.app.ServiceLocator;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.screenmanager.ScreenManager;
+import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommand;
 import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaItemViewBinder;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaItemViewFactory;
@@ -39,6 +42,7 @@ public class SodaListFragment extends Fragment implements SodaListView {
     private ListView mListView;
     private SodaListAdapter mListAdapter;
     private ListViewCollectionView mCollectionView;
+    private SodaDetailsScreenDisplayCommandFactory mSodaDetailsScreenDisplayCommandFactory;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,10 +84,11 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
         final SodaListProviderFactory sodaListProviderFactory = new SodaListProviderFactory();
 
+        mSodaDetailsScreenDisplayCommandFactory = new SodaDetailsScreenDisplayCommandFactory((ScreenManager) ServiceLocator.getService(ServiceLocator.SCREEN_MANAGER));
         mController = new SodaListController(
                 this,
                 sodaListProviderFactory.createSodaListProvider(new OkHttpNetworkingFactory(getActivity()), config),
-                new SodaDetailsScreenDisplayCommandFactory((ScreenManager)ServiceLocator.getService(ServiceLocator.SCREEN_MANAGER)));
+                mSodaDetailsScreenDisplayCommandFactory);
 
         mController.onReady();
     }
@@ -95,11 +100,21 @@ public class SodaListFragment extends Fragment implements SodaListView {
     }
 
     private CollectionModel createCollectionModel(SodaList sodaList) {
+
+        // TODO: factoryise this stuff. abstract types around data adapters for model conversion.
+
         ArrayList<ItemModel> itemModels = new ArrayList<ItemModel>();
 
         ItemViewFactory itemViewFactory = new SodaItemViewFactory(getActivity());
-        ItemViewBinder itemViewBinder = new SodaItemViewBinder();
-        for(Soda soda : sodaList.getAsList()) {
+        for(final Soda soda : sodaList.getAsList()) {
+
+            final ScreenDisplayCommand screenDisplayCommand = mSodaDetailsScreenDisplayCommandFactory.createWithData(soda);
+            ItemViewBinder itemViewBinder = new SodaItemViewBinder(new ClickListener() {
+                @Override
+                public void onClick() {
+                    screenDisplayCommand.displayScreen();
+                }
+            });
             ItemViewModel itemViewModel = new SodaListItemViewModel(soda.getName());
             itemModels.add(new ItemModel(itemViewFactory, itemViewBinder, itemViewModel));
         }
