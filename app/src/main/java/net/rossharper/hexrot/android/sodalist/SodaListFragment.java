@@ -59,9 +59,9 @@ public class SodaListFragment extends Fragment implements SodaListView {
 
     @Override
     public void displaySodaList(SodaList sodaList) {
-        CollectionModelFactory<SodaList> collectionModelFactory
+        CollectionModelFactory collectionModelFactory
                 = new SodaListCollectionModelFactory((ScreenManager) ServiceLocator.getService(ServiceLocator.SCREEN_MANAGER));
-        mCollectionView.setCollectionModel(collectionModelFactory.createCollectionModel(sodaList));
+        mCollectionView.setCollectionModel(collectionModelFactory.createCollectionModel(sodaList.getAsList()));
     }
 
     @Override

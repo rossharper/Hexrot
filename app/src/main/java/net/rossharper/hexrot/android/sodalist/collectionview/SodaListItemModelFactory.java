@@ -8,7 +8,7 @@ import net.rossharper.collectionview.ItemViewFactory;
 import net.rossharper.collectionview.ItemViewModel;
 import net.rossharper.hexrot.model.Soda;
 
-class SodaListItemModelFactory implements ItemModelFactory<Soda> {
+class SodaListItemModelFactory implements ItemModelFactory {
     private SodaListItemDataAdapter mDataAdapter = new SodaListItemDataAdapter();
     private ItemViewFactory mItemViewFactory = new SodaItemViewFactory();
     private ClickListenerFactory<Soda> mClickListenerFactory;
@@ -17,9 +17,12 @@ class SodaListItemModelFactory implements ItemModelFactory<Soda> {
         mClickListenerFactory = clickListenerFactory;
     }
 
-    public ItemModel createItemModel(Soda data) {
-        ItemViewBinder itemViewBinder = new SodaItemViewBinder(mClickListenerFactory.createClickListener(data));
-        ItemViewModel itemViewModel = mDataAdapter.createViewModel(data);
+    public ItemModel createItemModel(Object data) {
+        // TODO: how to do away with this cast using generics?
+        Soda soda = (Soda)data;
+
+        ItemViewBinder itemViewBinder = new SodaItemViewBinder(mClickListenerFactory.createClickListener(soda));
+        ItemViewModel itemViewModel = mDataAdapter.createViewModel(soda);
 
         return new ItemModel(mItemViewFactory, itemViewBinder, itemViewModel);
     }

@@ -1,7 +1,7 @@
 package net.rossharper.collectionview;
 
-import net.rossharper.collectionview.CollectionModel;
+import java.util.List;
 
-public interface CollectionModelFactory<DataType> {
-    CollectionModel createCollectionModel(DataType data);
+public interface CollectionModelFactory {
+    CollectionModel createCollectionModel(List<?> data);
 }
