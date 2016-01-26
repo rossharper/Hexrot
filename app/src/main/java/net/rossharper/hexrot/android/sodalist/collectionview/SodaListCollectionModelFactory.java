@@ -30,22 +30,27 @@ public class SodaListCollectionModelFactory implements CollectionModelFactory<So
         ArrayList<ItemModel> itemModels = new ArrayList<ItemModel>();
 
         ItemViewFactory itemViewFactory = new SodaItemViewFactory();
+
         SodaDetailsScreenDisplayCommandFactory screenDisplayCommandFactory =
                 new SodaDetailsScreenDisplayCommandFactory(mScreenManager);
+
+        SodaListItemDataAdapter dataAdapter = new SodaListItemDataAdapter();
 
         for(final Soda soda : sodaList.getAsList()) {
 
             final ScreenDisplayCommand screenDisplayCommand = screenDisplayCommandFactory.createWithData(soda);
+
             ItemViewBinder itemViewBinder = new SodaItemViewBinder(new ClickListener() {
                 @Override
                 public void onClick() {
                     screenDisplayCommand.displayScreen();
                 }
             });
-            ItemViewModel itemViewModel = new SodaListItemViewModel(soda.getName());
+            ItemViewModel itemViewModel = dataAdapter.createViewModel(soda);
             itemModels.add(new ItemModel(itemViewFactory, itemViewBinder, itemViewModel));
         }
 
         return new CollectionModel(itemModels);
     }
+
 }
