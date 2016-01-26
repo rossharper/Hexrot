@@ -29,28 +29,53 @@ public class SodaListCollectionModelFactory implements CollectionModelFactory<So
 
         ArrayList<ItemModel> itemModels = new ArrayList<ItemModel>();
 
-        ItemViewFactory itemViewFactory = new SodaItemViewFactory();
-
-        SodaDetailsScreenDisplayCommandFactory screenDisplayCommandFactory =
+        final SodaDetailsScreenDisplayCommandFactory screenDisplayCommandFactory =
                 new SodaDetailsScreenDisplayCommandFactory(mScreenManager);
 
-        SodaListItemDataAdapter dataAdapter = new SodaListItemDataAdapter();
+        ClickListenerFactory<Soda> clickListenerFactory = new ClickListenerFactory<Soda>() {
+            @Override
+            public ClickListener createClickListener(Soda data) {
+                final ScreenDisplayCommand screenDisplayCommand = screenDisplayCommandFactory.createWithData(data);
+                return new ClickListener() {
+                    @Override
+                    public void onClick() {
+                        screenDisplayCommand.displayScreen();
+                    }
+                };
+            }
+        };
 
+        SodaListItemModelFactory itemModelFactory = new SodaListItemModelFactory(clickListenerFactory);
+
+        // TODO: some sort of default modeladapter
         for(final Soda soda : sodaList.getAsList()) {
-
-            final ScreenDisplayCommand screenDisplayCommand = screenDisplayCommandFactory.createWithData(soda);
-
-            ItemViewBinder itemViewBinder = new SodaItemViewBinder(new ClickListener() {
-                @Override
-                public void onClick() {
-                    screenDisplayCommand.displayScreen();
-                }
-            });
-            ItemViewModel itemViewModel = dataAdapter.createViewModel(soda);
-            itemModels.add(new ItemModel(itemViewFactory, itemViewBinder, itemViewModel));
+            itemModels.add(itemModelFactory.createItemModel(soda));
         }
 
         return new CollectionModel(itemModels);
     }
 
+    // TODO: pull out somewhere
+    interface ClickListenerFactory<DataType> {
+        ClickListener createClickListener(DataType data);
+    }
+
+    // TODO: abstraction for this?
+    class SodaListItemModelFactory {
+        private SodaListItemDataAdapter mDataAdapter = new SodaListItemDataAdapter();
+        private ItemViewFactory mItemViewFactory = new SodaItemViewFactory();
+        private ClickListenerFactory<Soda> mClickListenerFactory;
+
+        SodaListItemModelFactory(ClickListenerFactory<Soda> clickListenerFactory) {
+            mClickListenerFactory = clickListenerFactory;
+        }
+
+        public ItemModel createItemModel(Soda data) {
+
+            ItemViewBinder itemViewBinder = new SodaItemViewBinder(mClickListenerFactory.createClickListener(data));
+            ItemViewModel itemViewModel = mDataAdapter.createViewModel(data);
+
+            return new ItemModel(mItemViewFactory, itemViewBinder, itemViewModel);
+        }
+    }
 }
