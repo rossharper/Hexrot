@@ -4,15 +4,16 @@ An hexagonal Android experiment. In progress. Playing with some ideas. They may 
 
 Warning: hacks are abundant.
 
+There are zero unit tests, mainly because this is a hacking playground for trying out some ideas.
+I should write some really.
+
 TODO:
 
+- continue list abstraction (CollectionView) refactor to RecyclerView
 - UNIT TEST MORE OF THIS!
-- upgrade to latest API level
 - use pull down swipe refresh list
 
 - look into better thread handling
-- list item view holder
-- list item view class?
 
 - what about rotation - does my method of creating fragments introduce configuration change problems?
 
