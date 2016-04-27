@@ -14,6 +14,6 @@ public class OkHttpNetworkingFactory implements NetworkingFactory {
 
     @Override
     public StringRequest createStringRequest() {
-        return new OkHttpStringRequest(mainThreadInvoker);
+        return new MeasuredStringRequest(new OkHttpStringRequest(mainThreadInvoker));
     }
 }

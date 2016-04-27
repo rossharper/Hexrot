@@ -1,10 +1,10 @@
 package net.rossharper.hexrot.networking;
 
 public interface Request<T> {
-    void get(T url, ResponseListener<T> responseListener);
+    void get(final T url, final ResponseListener<T> responseListener);
 
     interface ResponseListener<T> {
-        void onResponse(T response);
+        void onResponse(final T response);
         void onError();
     }
 }
