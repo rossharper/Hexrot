@@ -78,7 +78,7 @@ public class SodaListFragment extends Fragment {
 
         CollectionModelDataAdapter collectionModelDataAdapter
                 = SodaListCollectionModelDataAdapterFactory.createCollectionModelDataAdapter(
-                (ScreenManager)applicationController.getServiceLocator().getService(ServiceLocator.SCREEN_MANAGER));
+                (ScreenManager<Fragment>)applicationController.getServiceLocator().getService(ServiceLocator.SCREEN_MANAGER));
 
         mCollectionViewPresenter = new CollectionViewPresenter(mCollectionView, dataProvider, collectionModelDataAdapter);
         mCollectionViewPresenter.onReady();

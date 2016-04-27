@@ -6,7 +6,7 @@ import android.os.Bundle;
 import net.rossharper.hexrot.android.screenmanager.ScreenFactory;
 import net.rossharper.hexrot.model.Soda;
 
-public class SodaDetailsScreenFactory implements ScreenFactory {
+public class SodaDetailsScreenFactory implements ScreenFactory<Fragment> {
     private Soda mSoda;
 
     public SodaDetailsScreenFactory(Soda soda) {

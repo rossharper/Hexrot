@@ -1,5 +1,7 @@
 package net.rossharper.hexrot.android.sodalist.collectionview;
 
+import android.app.Fragment;
+
 import net.rossharper.collectionview.ClickListenerFactory;
 import net.rossharper.collectionview.ItemModelFactory;
 import net.rossharper.collectionview.ClickListener;
@@ -13,7 +15,7 @@ import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodalist.collectionview.SodaListItemModelFactory;
 
 public class SodaListCollectionModelDataAdapterFactory {
-    public static CollectionModelDataAdapter createCollectionModelDataAdapter(ScreenManager screenManager) {
+    public static CollectionModelDataAdapter createCollectionModelDataAdapter(ScreenManager<Fragment> screenManager) {
 
         final SodaDetailsScreenDisplayCommandFactory screenDisplayCommandFactory =
                 new SodaDetailsScreenDisplayCommandFactory(screenManager);
