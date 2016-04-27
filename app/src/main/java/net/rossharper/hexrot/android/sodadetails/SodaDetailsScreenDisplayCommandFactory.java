@@ -1,16 +1,14 @@
 package net.rossharper.hexrot.android.sodadetails;
 
-import android.app.Fragment;
-
 import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
 import net.rossharper.hexrot.ScreenManager;
 import net.rossharper.hexrot.model.Soda;
 
 public class SodaDetailsScreenDisplayCommandFactory implements net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayCommandFactory {
-    private ScreenManager<Fragment> screenManager;
+    private ScreenManager screenManager;
 
-    public SodaDetailsScreenDisplayCommandFactory(ScreenManager<Fragment> screenManager) {
+    public SodaDetailsScreenDisplayCommandFactory(ScreenManager screenManager) {
         this.screenManager = screenManager;
     }
 

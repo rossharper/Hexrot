@@ -32,7 +32,7 @@ public class MeasuredStringRequest implements StringRequest {
             private void onRequestEnded() {
                 long requestEndedTimestampMs = getTimestampMs();
                 long requestTimeMs = requestEndedTimestampMs - requestStartedTimestampMs;
-                Log.i("MeasuredStringRequest", "Request for " + url + " took " + requestTimeMs + " milliseconds.");
+                Log.i("MeasuredStringRequest", "Request took " + requestTimeMs + "ms for " + url);
             }
         });
     }

@@ -15,9 +15,7 @@ import net.rossharper.hexrot.ApplicationController;
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.SingleActivityApplication;
 import net.rossharper.hexrot.android.app.AppConfig;
-import net.rossharper.hexrot.ServiceLocator;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
-import net.rossharper.hexrot.ScreenManager;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaListCollectionModelDataAdapterFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodaprovider.SodaListProvider;
@@ -43,7 +41,7 @@ public class SodaListFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        ApplicationController applicationController = ((SingleActivityApplication)getActivity()).getApplicationController();
+        final ApplicationController applicationController = ((SingleActivityApplication)getActivity()).getApplicationController();
 
         final SodaListProviderConfig config = new SodaListProviderConfig() {
             @Override
@@ -78,7 +76,7 @@ public class SodaListFragment extends Fragment {
 
         CollectionModelDataAdapter collectionModelDataAdapter
                 = SodaListCollectionModelDataAdapterFactory.createCollectionModelDataAdapter(
-                (ScreenManager<Fragment>)applicationController.getServiceLocator().getService(ServiceLocator.SCREEN_MANAGER));
+                applicationController.getScreenManager());
 
         mCollectionViewPresenter = new CollectionViewPresenter(mCollectionView, dataProvider, collectionModelDataAdapter);
         mCollectionViewPresenter.onReady();

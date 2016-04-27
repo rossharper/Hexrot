@@ -15,7 +15,7 @@ import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodalist.collectionview.SodaListItemModelFactory;
 
 public class SodaListCollectionModelDataAdapterFactory {
-    public static CollectionModelDataAdapter createCollectionModelDataAdapter(ScreenManager<Fragment> screenManager) {
+    public static CollectionModelDataAdapter createCollectionModelDataAdapter(ScreenManager screenManager) {
 
         final SodaDetailsScreenDisplayCommandFactory screenDisplayCommandFactory =
                 new SodaDetailsScreenDisplayCommandFactory(screenManager);

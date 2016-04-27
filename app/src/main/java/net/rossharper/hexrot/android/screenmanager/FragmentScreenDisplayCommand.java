@@ -1,16 +1,14 @@
 package net.rossharper.hexrot.android.screenmanager;
 
-import android.app.Fragment;
-
 import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.ScreenFactory;
 import net.rossharper.hexrot.ScreenManager;
 
 public class FragmentScreenDisplayCommand implements ScreenDisplayCommand {
-    private ScreenManager<Fragment> screenManager;
-    private ScreenFactory<Fragment> sodaListScreenFactory;
+    private ScreenManager screenManager;
+    private ScreenFactory sodaListScreenFactory;
 
-    public FragmentScreenDisplayCommand(ScreenManager<Fragment> screenManager, ScreenFactory<Fragment> sodaListScreenFactory) {
+    public FragmentScreenDisplayCommand(ScreenManager screenManager, ScreenFactory sodaListScreenFactory) {
         this.screenManager = screenManager;
         this.sodaListScreenFactory = sodaListScreenFactory;
     }
