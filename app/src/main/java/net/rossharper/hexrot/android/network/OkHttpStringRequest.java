@@ -5,21 +5,23 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import net.rossharper.hexrot.networking.StringRequest;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-class OkHttpStringFetcher implements net.rossharper.hexrot.networking.StringFetcher {
+class OkHttpStringRequest implements StringRequest {
 
     // TODO: just calling back to main thread for now
     // needs a better threading model
     private final MainThreadInvoker mainThreadInvoker;
 
-    public OkHttpStringFetcher(final MainThreadInvoker mainThreadInvoker) {
+    public OkHttpStringRequest(final MainThreadInvoker mainThreadInvoker) {
         this.mainThreadInvoker = mainThreadInvoker;
     }
 
     @Override
-    public void get(final String url, final ResponseListener responseListener) {
+    public void get(final String url, final ResponseListener<String> responseListener) {
         OkHttpClient httpClient = new OkHttpClient();
 
         Request request = new Request.Builder()

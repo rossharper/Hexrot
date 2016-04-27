@@ -1,7 +1,7 @@
 package net.rossharper.hexrot.sodaprovider;
 
 import net.rossharper.hexrot.networking.NetworkingFactory;
-import net.rossharper.hexrot.networking.StringFetcher;
+import net.rossharper.hexrot.networking.Request;
 
 // TODO: probably not named properly anymore
 class GithubJsonSodaListFetcher implements SodaListFetcher {
@@ -16,7 +16,7 @@ class GithubJsonSodaListFetcher implements SodaListFetcher {
 
     @Override
     public void fetchSodaList(final Listener listener) {
-        networkingFactory.createStringFetcher().get(config.getSodaListUrl(), new StringFetcher.ResponseListener() {
+        networkingFactory.createStringRequest().get(config.getSodaListUrl(), new Request.ResponseListener<String>() {
             @Override
             public void onResponse(String response) {
                 listener.sodasReceived(response);
