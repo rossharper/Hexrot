@@ -13,7 +13,7 @@ import net.rossharper.collectionview.DataProvider;
 import net.rossharper.collectionview.DataProviderListener;
 import net.rossharper.hexrot.ApplicationController;
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.android.MainActivity;
+import net.rossharper.hexrot.android.SingleActivityApplication;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.ServiceLocator;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
@@ -43,7 +43,7 @@ public class SodaListFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        ApplicationController applicationController = ((MainActivity)getActivity()).getApplicationController();
+        ApplicationController applicationController = ((SingleActivityApplication)getActivity()).getApplicationController();
 
         final SodaListProviderConfig config = new SodaListProviderConfig() {
             @Override

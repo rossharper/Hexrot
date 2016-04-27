@@ -11,7 +11,7 @@ import net.rossharper.hexrot.android.screenmanager.ScreenManager;
 import net.rossharper.hexrot.android.sodalist.SodaListScreenDisplayCommand;
 import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
 
-public class MainActivity extends Activity {
+public class SingleActivityApplication extends Activity {
 
     private ApplicationController mApplicationController;
 
