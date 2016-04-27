@@ -8,9 +8,11 @@ import java.util.Date;
 
 public class MeasuredStringRequest implements StringRequest {
     private StringRequest request;
+    private RequestStatisticsReporter requestStatisticsReporter;
 
-    public MeasuredStringRequest(StringRequest request) {
+    public MeasuredStringRequest(StringRequest request, RequestStatisticsReporter requestStatisticsReporter) {
         this.request = request;
+        this.requestStatisticsReporter = requestStatisticsReporter;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class MeasuredStringRequest implements StringRequest {
             private void onRequestEnded() {
                 long requestEndedTimestampMs = getTimestampMs();
                 long requestTimeMs = requestEndedTimestampMs - requestStartedTimestampMs;
-                Log.i("MeasuredStringRequest", "Request took " + requestTimeMs + "ms for " + url);
+                requestStatisticsReporter.reportRequestStatistic(requestTimeMs);
             }
         });
     }

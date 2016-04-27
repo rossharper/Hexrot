@@ -6,6 +6,8 @@ import android.os.Bundle;
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
+import net.rossharper.hexrot.android.network.MeasuredNetworkingFactory;
+import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenManager;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
 import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
@@ -29,6 +31,7 @@ public class SingleActivityApplication extends Activity {
 
         mApplicationController = new ApplicationController(
                 screenManager,
+                new MeasuredNetworkingFactory(new OkHttpNetworkingFactory(this)),
                 new FragmentScreenDisplayCommand(
                     screenManager,
                     new SodaListScreenFactory()));

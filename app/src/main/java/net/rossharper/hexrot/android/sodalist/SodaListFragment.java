@@ -15,7 +15,6 @@ import net.rossharper.hexrot.ApplicationController;
 import net.rossharper.hexrot.R;
 import net.rossharper.hexrot.android.SingleActivityApplication;
 import net.rossharper.hexrot.android.app.AppConfig;
-import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaListCollectionModelDataAdapterFactory;
 import net.rossharper.hexrot.sodalist.SodaList;
 import net.rossharper.hexrot.sodaprovider.SodaListProvider;
@@ -55,7 +54,7 @@ public class SodaListFragment extends Fragment {
         DataProvider dataProvider = new DataProvider() {
             SodaListProvider mSodaListProvider =
                     sodaListProviderFactory.createSodaListProvider(
-                            new OkHttpNetworkingFactory(getActivity()),
+                            applicationController.getNetworkingFactory(),
                             config);
 
             @Override
