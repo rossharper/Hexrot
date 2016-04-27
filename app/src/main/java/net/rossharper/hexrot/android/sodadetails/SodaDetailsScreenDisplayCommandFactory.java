@@ -4,7 +4,7 @@ import android.app.Fragment;
 
 import net.rossharper.hexrot.ScreenDisplayCommand;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
-import net.rossharper.hexrot.android.screenmanager.ScreenManager;
+import net.rossharper.hexrot.ScreenManager;
 import net.rossharper.hexrot.model.Soda;
 
 public class SodaDetailsScreenDisplayCommandFactory implements net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayCommandFactory {

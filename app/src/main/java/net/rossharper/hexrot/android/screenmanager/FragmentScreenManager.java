@@ -4,6 +4,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
+import net.rossharper.hexrot.ScreenFactory;
+import net.rossharper.hexrot.ScreenManager;
+
 public class FragmentScreenManager implements ScreenManager<Fragment> {
     private int mRootContainerId;
     private FragmentManager mFragmentManager;

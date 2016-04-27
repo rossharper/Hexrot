@@ -3,7 +3,7 @@ package net.rossharper.hexrot.android.sodadetails;
 import android.app.Fragment;
 import android.os.Bundle;
 
-import net.rossharper.hexrot.android.screenmanager.ScreenFactory;
+import net.rossharper.hexrot.ScreenFactory;
 import net.rossharper.hexrot.model.Soda;
 
 public class SodaDetailsScreenFactory implements ScreenFactory<Fragment> {

@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.screenmanager;
+package net.rossharper.hexrot;
 
 public interface ScreenFactory<T> {
     T getScreen();

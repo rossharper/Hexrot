@@ -3,6 +3,8 @@ package net.rossharper.hexrot.android.screenmanager;
 import android.app.Fragment;
 
 import net.rossharper.hexrot.ScreenDisplayCommand;
+import net.rossharper.hexrot.ScreenFactory;
+import net.rossharper.hexrot.ScreenManager;
 
 public class FragmentScreenDisplayCommand implements ScreenDisplayCommand {
     private ScreenManager<Fragment> screenManager;

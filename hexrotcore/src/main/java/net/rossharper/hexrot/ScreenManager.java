@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.screenmanager;
+package net.rossharper.hexrot;
 
 public interface ScreenManager<T> {
     void displayRootScreen(ScreenFactory<T> screenFactory);

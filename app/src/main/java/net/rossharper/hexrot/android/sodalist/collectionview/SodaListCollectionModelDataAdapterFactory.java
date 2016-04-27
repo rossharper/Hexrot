@@ -9,7 +9,7 @@ import net.rossharper.collectionview.CollectionModelDataAdapter;
 import net.rossharper.collectionview.ItemModelFactoryRegistry;
 import net.rossharper.collectionview.RegistryCollectionModelDataAdapter;
 import net.rossharper.hexrot.ScreenDisplayCommand;
-import net.rossharper.hexrot.android.screenmanager.ScreenManager;
+import net.rossharper.hexrot.ScreenManager;
 import net.rossharper.hexrot.android.sodadetails.SodaDetailsScreenDisplayCommandFactory;
 import net.rossharper.hexrot.model.Soda;
 import net.rossharper.hexrot.sodalist.collectionview.SodaListItemModelFactory;
