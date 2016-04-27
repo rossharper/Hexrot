@@ -1,13 +1,17 @@
 package net.rossharper.hexrot;
 
 public class ApplicationController {
-    private ScreenDisplayCommand homeScreenDisplayCommand;
+    private ServiceLocator serviceLocator;
 
-    public ApplicationController(ScreenDisplayCommand homeScreenDisplayCommand) {
-        this.homeScreenDisplayCommand = homeScreenDisplayCommand;
+    public ApplicationController(ServiceLocator serviceLocator) {
+        this.serviceLocator = serviceLocator;
     }
 
-    public void onReady() {
+    public void start(ScreenDisplayCommand homeScreenDisplayCommand) {
         homeScreenDisplayCommand.displayScreen();
+    }
+
+    public ServiceLocator getServiceLocator() {
+        return serviceLocator;
     }
 }

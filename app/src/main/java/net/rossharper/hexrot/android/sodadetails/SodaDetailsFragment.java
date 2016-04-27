@@ -16,9 +16,6 @@ public class SodaDetailsFragment extends Fragment implements SodaDetailsView {
     public static final String SODA_ARG = "soda";
     private SodaDetailsController mSodaDetailsController;
 
-    public SodaDetailsFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.soda_details_fragment, container, false);
