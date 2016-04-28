@@ -20,3 +20,6 @@ TODO:
 - list load spinner
 - better error message
 - network timeout
+
+- stats reporting for user clicks to display rendered
+- crash reporting
