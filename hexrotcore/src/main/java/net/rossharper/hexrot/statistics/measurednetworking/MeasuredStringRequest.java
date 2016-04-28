@@ -1,6 +1,8 @@
-package net.rossharper.hexrot.android.network;
+package net.rossharper.hexrot.statistics.measurednetworking;
 
 import net.rossharper.hexrot.networking.StringRequest;
+import net.rossharper.hexrot.statistics.RequestStatisticsReporter;
+import net.rossharper.hexrot.time.TimeProvider;
 
 public class MeasuredStringRequest implements StringRequest {
     private StringRequest request;

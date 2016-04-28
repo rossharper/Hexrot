@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.network;
+package net.rossharper.hexrot.statistics;
 
 public class RequestStatisticUrlBuilder {
     public String reportUrl(long requestTimeMs) {

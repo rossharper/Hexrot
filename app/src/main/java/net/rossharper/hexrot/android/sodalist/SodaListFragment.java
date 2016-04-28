@@ -13,7 +13,7 @@ import net.rossharper.collectionview.DataProvider;
 import net.rossharper.collectionview.DataProviderListener;
 import net.rossharper.hexrot.ApplicationController;
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.android.SingleActivityApplication;
+import net.rossharper.hexrot.android.app.SingleActivityApplication;
 import net.rossharper.hexrot.android.app.AppConfig;
 import net.rossharper.hexrot.android.sodalist.collectionview.SodaListCollectionModelDataAdapterFactory;
 import net.rossharper.hexrot.sodalist.SodaList;

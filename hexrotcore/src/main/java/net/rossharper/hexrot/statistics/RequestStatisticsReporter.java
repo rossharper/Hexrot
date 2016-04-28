@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.network;
+package net.rossharper.hexrot.statistics;
 
 import net.rossharper.hexrot.networking.NetworkingFactory;
 import net.rossharper.hexrot.networking.Request;

@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android.network;
+package net.rossharper.hexrot.time;
 
 import java.util.Date;
 

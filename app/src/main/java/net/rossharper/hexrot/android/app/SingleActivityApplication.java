@@ -1,4 +1,4 @@
-package net.rossharper.hexrot.android;
+package net.rossharper.hexrot.android.app;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import net.rossharper.hexrot.ApplicationController;
 
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.android.network.MeasuredNetworkingFactory;
+import net.rossharper.hexrot.statistics.measurednetworking.MeasuredNetworkingFactory;
 import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenManager;
 import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
