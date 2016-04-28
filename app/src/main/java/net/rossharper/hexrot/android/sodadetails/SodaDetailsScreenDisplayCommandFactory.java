@@ -1,8 +1,9 @@
 package net.rossharper.hexrot.android.sodadetails;
 
 import net.rossharper.hexrot.ScreenDisplayCommand;
-import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
+import net.rossharper.hexrot.android.screenmanager.RootScreenDisplayCommand;
 import net.rossharper.hexrot.ScreenManager;
+import net.rossharper.hexrot.android.screenmanager.StackedScreenDisplayCommand;
 import net.rossharper.hexrot.model.Soda;
 
 public class SodaDetailsScreenDisplayCommandFactory implements net.rossharper.hexrot.sodadetails.SodaDetailsScreenDisplayCommandFactory {
@@ -14,6 +15,6 @@ public class SodaDetailsScreenDisplayCommandFactory implements net.rossharper.he
 
     @Override
     public ScreenDisplayCommand createWithData(Soda soda) {
-        return new FragmentScreenDisplayCommand(screenManager, new SodaDetailsScreenFactory(soda));
+        return new StackedScreenDisplayCommand(screenManager, new SodaDetailsScreenFactory(soda));
     }
 }

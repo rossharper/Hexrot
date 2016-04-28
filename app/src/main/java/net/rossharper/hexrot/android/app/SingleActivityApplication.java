@@ -16,18 +16,10 @@ public class SingleActivityApplication extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        createSingleActivityApplication();
-    }
-
-    private void createSingleActivityApplication() {
         mApplicationController = ApplicationControllerFactory.create(this, getFragmentManager());
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        mApplicationController.start();
+        if(savedInstanceState == null) {
+            mApplicationController.start();
+        }
     }
 
     public ApplicationController getApplicationController() {
