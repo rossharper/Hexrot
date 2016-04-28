@@ -3,9 +3,6 @@ package net.rossharper.hexrot.android.network;
 import android.content.Context;
 import android.os.Handler;
 
-/**
- * Created by harper05 on 09/12/15.
- */
 public class MainThreadInvoker {
     private final Handler mMainThreadHandler;
 

@@ -13,6 +13,6 @@ public class MeasuredNetworkingFactory implements NetworkingFactory {
     @Override
     public StringRequest createStringRequest() {
         return new MeasuredStringRequest(unmeasuredNetworkingFactory.createStringRequest(),
-                new RequestStatisticsReporter(unmeasuredNetworkingFactory, new RequestStatisticUrlBuilder()));
+                new RequestStatisticsReporter(unmeasuredNetworkingFactory, new RequestStatisticUrlBuilder()), new SystemTimeProvider());
     }
 }

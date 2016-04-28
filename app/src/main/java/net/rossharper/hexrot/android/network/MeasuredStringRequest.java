@@ -1,23 +1,21 @@
 package net.rossharper.hexrot.android.network;
 
-import android.util.Log;
-
 import net.rossharper.hexrot.networking.StringRequest;
-
-import java.util.Date;
 
 public class MeasuredStringRequest implements StringRequest {
     private StringRequest request;
     private RequestStatisticsReporter requestStatisticsReporter;
+    private TimeProvider timeProvider;
 
-    public MeasuredStringRequest(StringRequest request, RequestStatisticsReporter requestStatisticsReporter) {
+    public MeasuredStringRequest(StringRequest request, RequestStatisticsReporter requestStatisticsReporter, TimeProvider timeProvider) {
         this.request = request;
         this.requestStatisticsReporter = requestStatisticsReporter;
+        this.timeProvider = timeProvider;
     }
 
     @Override
     public void get(final String url, final ResponseListener<String> responseListener) {
-        final long requestStartedTimestampMs = getTimestampMs();
+        final long requestStartedTimestampMs = timeProvider.getCurrentTimeInMillis();
         request.get(url, new ResponseListener<String>() {
             @Override
             public void onResponse(String response) {
@@ -32,14 +30,11 @@ public class MeasuredStringRequest implements StringRequest {
             }
 
             private void onRequestEnded() {
-                long requestEndedTimestampMs = getTimestampMs();
+                long requestEndedTimestampMs = timeProvider.getCurrentTimeInMillis();
                 long requestTimeMs = requestEndedTimestampMs - requestStartedTimestampMs;
                 requestStatisticsReporter.reportRequestStatistic(requestTimeMs);
             }
         });
     }
 
-    private long getTimestampMs() {
-        return new Date().getTime();
-    }
 }
