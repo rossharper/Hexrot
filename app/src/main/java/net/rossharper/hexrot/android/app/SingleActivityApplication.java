@@ -4,13 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import net.rossharper.hexrot.ApplicationController;
-
 import net.rossharper.hexrot.R;
-import net.rossharper.hexrot.statistics.measurednetworking.MeasuredNetworkingFactory;
-import net.rossharper.hexrot.android.network.OkHttpNetworkingFactory;
-import net.rossharper.hexrot.android.screenmanager.FragmentScreenManager;
-import net.rossharper.hexrot.android.screenmanager.FragmentScreenDisplayCommand;
-import net.rossharper.hexrot.android.sodalist.SodaListScreenFactory;
 
 public class SingleActivityApplication extends Activity {
 
@@ -26,15 +20,7 @@ public class SingleActivityApplication extends Activity {
     }
 
     private void createSingleActivityApplication() {
-
-        FragmentScreenManager screenManager = new FragmentScreenManager(getFragmentManager(), R.id.main_container);
-
-        mApplicationController = new ApplicationController(
-                screenManager,
-                new MeasuredNetworkingFactory(new OkHttpNetworkingFactory(this)),
-                new FragmentScreenDisplayCommand(
-                    screenManager,
-                    new SodaListScreenFactory()));
+        mApplicationController = ApplicationControllerFactory.create(this, getFragmentManager());
     }
 
     @Override
