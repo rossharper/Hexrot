@@ -12,14 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 class OkHttpStringRequest implements StringRequest {
 
-    // TODO: just calling back to main thread for now
-    // needs a better threading model
-    private final MainThreadInvoker mainThreadInvoker;
-
-    public OkHttpStringRequest(final MainThreadInvoker mainThreadInvoker) {
-        this.mainThreadInvoker = mainThreadInvoker;
-    }
-
     @Override
     public void get(final String url, final ResponseListener<String> responseListener) {
         OkHttpClient httpClient = new OkHttpClient();
@@ -34,23 +26,13 @@ class OkHttpStringRequest implements StringRequest {
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(final Request request, IOException e) {
-                mainThreadInvoker.invokeOnMainThread(new MainThreadInvoker.Command() {
-                    @Override
-                    public void invoke() {
-                        responseListener.onError();
-                    }
-                });
+                responseListener.onError();
             }
 
             @Override
             public void onResponse(final Response response) throws IOException {
                 final String stringResponse = response.body().string();
-                mainThreadInvoker.invokeOnMainThread(new MainThreadInvoker.Command() {
-                    @Override
-                    public void invoke() {
-                        responseListener.onResponse(stringResponse);
-                    }
-                });
+                responseListener.onResponse(stringResponse);
             }
         });
     }

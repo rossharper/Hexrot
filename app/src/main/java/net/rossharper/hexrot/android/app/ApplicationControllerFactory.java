@@ -17,7 +17,7 @@ public class ApplicationControllerFactory {
         return new Application(
                 AppConfigFactory.create(),
                 screenManager,
-                new MeasuredNetworkingFactory(new OkHttpNetworkingFactory(context.getApplicationContext())),
+                new MeasuredNetworkingFactory(new OkHttpNetworkingFactory()),
                 new RootScreenDisplayCommand(
                         screenManager,
                         new SodaListScreenFactory()));

@@ -23,3 +23,8 @@ TODO:
 
 - stats reporting for user clicks to display rendered
 - crash reporting
+
+
+LOOK AT
+android data binding (can handle the main thread marshalling for me?)
+agera
