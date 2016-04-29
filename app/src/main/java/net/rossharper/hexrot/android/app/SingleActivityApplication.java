@@ -3,12 +3,12 @@ package net.rossharper.hexrot.android.app;
 import android.app.Activity;
 import android.os.Bundle;
 
-import net.rossharper.hexrot.ApplicationController;
+import net.rossharper.hexrot.Application;
 import net.rossharper.hexrot.R;
 
 public class SingleActivityApplication extends Activity {
 
-    private ApplicationController mApplicationController;
+    private Application mApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,13 +16,13 @@ public class SingleActivityApplication extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        mApplicationController = ApplicationControllerFactory.create(this, getFragmentManager());
+        mApplication = ApplicationControllerFactory.create(this, getFragmentManager());
         if(savedInstanceState == null) {
-            mApplicationController.start();
+            mApplication.start();
         }
     }
 
-    public ApplicationController getApplicationController() {
-        return mApplicationController;
+    public Application getApplicationController() {
+        return mApplication;
     }
 }

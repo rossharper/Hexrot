@@ -1,7 +1,6 @@
 package net.rossharper.hexrot.android.sodadetails;
 
 import net.rossharper.hexrot.ScreenDisplayCommand;
-import net.rossharper.hexrot.android.screenmanager.RootScreenDisplayCommand;
 import net.rossharper.hexrot.ScreenManager;
 import net.rossharper.hexrot.android.screenmanager.StackedScreenDisplayCommand;
 import net.rossharper.hexrot.model.Soda;
