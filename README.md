@@ -24,7 +24,10 @@ TODO:
 - stats reporting for user clicks to display rendered
 - crash reporting
 
+- Reintroduce the View and Presenter interfaces to the SodaList (wrapping/marshalling between the model and CollectionView)
+- Create WEAR and TV UIs to demonstrate reusability of presenters with different views
 
 LOOK AT
 android data binding (can handle the main thread marshalling for me?)
 agera
+Dagger for Fragment/Activity dependency injection
