@@ -10,6 +10,7 @@ I should write some really.
 TODO:
 
 - continue list abstraction (CollectionView) refactor to RecyclerView
+- refactor collectiondataadapter stuff to have some sort of builder?
 - UNIT TEST MORE OF THIS!
 - use pull down swipe refresh list
 
